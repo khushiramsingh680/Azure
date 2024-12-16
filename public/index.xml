@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Azure Managed Kubernetes</title>
-    <link>https://khushiramsingh680.github.io/Aks/index.html</link>
+    <title>Azure Cloud Documentation</title>
+    <link>https://khushiramsingh680.github.io/Azure/index.html</link>
     <description>Azure Cloud Documentatation</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://khushiramsingh680.github.io/Aks/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://khushiramsingh680.github.io/Azure/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure documentation</title>
-      <link>https://khushiramsingh680.github.io/Aks/azure/index.html</link>
+      <link>https://khushiramsingh680.github.io/Azure/azure/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://khushiramsingh680.github.io/Aks/azure/index.html</guid>
+      <guid>https://khushiramsingh680.github.io/Azure/azure/index.html</guid>
       <description>Learn by doing</description>
+    </item>
+    <item>
+      <title>Part 01</title>
+      <link>https://khushiramsingh680.github.io/Azure/part01/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part01/index.html</guid>
+      <description>Vagrant Guide Vagrant is an open-source tool for building and managing virtualized environments. It provides easy-to-use workflows for working with different development environments.&#xA;Installation 1. Install VirtualBox Vagrant requires a provider such as VirtualBox. Download and install it from VirtualBox Downloads.&#xA;2. Install Vagrant Download and install Vagrant from Vagrant Downloads.&#xA;Verify the installation:&#xA;vagrant --version&#xD;Getting Started with Vagrant 1. Initialize a New Project To create a new Vagrant environment:</description>
+    </item>
+    <item>
+      <title>Part 02</title>
+      <link>https://khushiramsingh680.github.io/Azure/part02/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part02/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 03</title>
+      <link>https://khushiramsingh680.github.io/Azure/part03/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part03/index.html</guid>
+      <description>Azure CLI Commands Overview Azure CLI is a command-line tool used to manage Azure resources. You can run Azure CLI commands to automate and streamline your workflows.&#xA;Installation To install Azure CLI, follow these steps:&#xA;On Linux (Ubuntu/Debian) curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash&#xD;On macOS brew update &amp;&amp; brew install azure-cli&#xD;On Windows # Download the installer from the official website: https://aka.ms/installazurecliwindows&#xD;Azure CLI Login Before using Azure CLI, you need to log in to your Azure account.</description>
+    </item>
+    <item>
+      <title>Part 04</title>
+      <link>https://khushiramsingh680.github.io/Azure/part04/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part04/index.html</guid>
+      <description>Azure Cloud Image Creation Azure Virtual Machine Scale Set Azure LoadBalancers</description>
     </item>
   </channel>
 </rss>
