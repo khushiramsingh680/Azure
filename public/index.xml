@@ -26,7 +26,7 @@
       <link>https://khushiramsingh680.github.io/Azure/part02/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://khushiramsingh680.github.io/Azure/part02/index.html</guid>
-      <description></description>
+      <description>Azure VM Tasks &amp; Common Interview Topics 1. Azure VM Basics Creating VMs: Understand the basics of creating and configuring VMs using both the Azure portal and Azure CLI. You should know different VM sizes, disk types, and pricing tiers. Start/Stop/Deallocate: Commands to start, stop, and deallocate VMs, and understanding the difference between stopping and deallocating a VM. Resizing a VM: Know how to resize a VM and the impact it has on the underlying infrastructure. 2. VM Networking Public vs Private IP Addresses: Configure and assign static/dynamic public and private IPs to Azure VMs. NSG (Network Security Groups): Configure NSGs to control inbound and outbound traffic for VMs. Load Balancing: Understand how to set up and use Azure Load Balancers for distributing traffic to multiple VMs. VNET and Subnets: Networking for VMs, including Virtual Networks (VNET), subnets, and peering. 3. Disks and Storage Managed vs Unmanaged Disks: Know the difference and implications on performance and cost. Attaching and Detaching Disks: Learn how to attach additional data disks to a VM and detach them when not needed. Disk Performance Tiers: Differences between Standard, Premium, and Ultra disks, and when to use each. 4. VM Images and Snapshots Creating Custom VM Images: Capture a VM as an image and reuse it to deploy new VMs with pre-configured environments. Snapshots: Creating and restoring from snapshots for backups. 5. Automation and Scaling Azure VM Scale Sets: Use VM Scale Sets for auto-scaling applications across multiple VMs. Automation: Use ARM Templates, Terraform, or Azure CLI to automate VM provisioning. Azure DevOps Pipelines: Automate VM creation and deployment as part of a CI/CD pipeline. 6. Azure VM Security Azure Bastion: Secure RDP/SSH access to VMs without exposing public IPs. Disk Encryption: Configure Azure Disk Encryption to secure data at rest. Managed Identities: Implement MSI for secure access to Azure resources without credentials. SSH Key Management: Generate and use SSH keys for Linux VM access, as well as passwordless access for Windows VMs. 7. Backup and Disaster Recovery Azure Backup: Set up Azure Backup for VM snapshots and restoring VMs in case of failure. Azure Site Recovery (ASR): Replicate and failover VMs for disaster recovery scenarios. 8. Troubleshooting Diagnosing VM Issues: Diagnose and troubleshoot VMs that fail to start or have performance issues (check logs, resource utilization, and network connectivity). Monitoring and Alerts: Set up monitoring using Azure Monitor and create alerts based on VM metrics like CPU usage, memory consumption, or disk IOPS. 9. Cost Management Azure Reserved Instances: Understand the concept of reserved VM instances to save on long-term costs. Spot VMs: Use Azure Spot VMs for cost-effective workloads and understand their limitations. VM Pricing: Estimate costs and optimize VMs for pricing based on workload needs. 10. OS-Specific Knowledge Windows VMs: Setting up RDP, enabling WinRM for remote management, configuring updates, and managing licensing. Linux VMs: SSH access, handling Linux kernel updates, and automating tasks with scripts. Common Interview Questions How would you create a virtual machine in Azure and configure it with specific VM size and OS?</description>
     </item>
     <item>
       <title>Part 03</title>
@@ -40,7 +40,119 @@
       <link>https://khushiramsingh680.github.io/Azure/part04/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://khushiramsingh680.github.io/Azure/part04/index.html</guid>
-      <description>Azure Cloud Image Creation Azure Virtual Machine Scale Set Azure LoadBalancers</description>
+      <description>Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.&#xA;Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:</description>
+    </item>
+    <item>
+      <title>Part 05</title>
+      <link>https://khushiramsingh680.github.io/Azure/part05/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part05/index.html</guid>
+      <description>1. Virtual Network (VNet) Azure Virtual Network (VNet) is the fundamental building block for private networks in Azure. VNets enable Azure resources, like Virtual Machines (VMs), to securely communicate with each other, the internet, and on-premises networks. VNets can be segmented into subnets for better management and security. Key Features: Isolation and segmentation: You can isolate VNets from each other. Subnets: Allow partitioning of a VNet into smaller network segments. Network Security Groups (NSGs): Control inbound and outbound traffic rules. Route Tables: Direct network traffic. 2. Subnets Subnets allow you to divide your VNet into smaller, isolated sections. Each subnet can have its own Network Security Group (NSG) to control traffic. Subnets also allow for organizing resources into distinct groups based on service types. 3. Network Security Group (NSG) NSGs are a set of firewall rules that control traffic to and from VMs. NSGs can be applied at the subnet level or directly to the VM’s network interface. Rules: Inbound rules: Define the traffic allowed to the VM. Outbound rules: Define the traffic allowed from the VM. 4. Virtual Private Network (VPN) Azure provides VPN Gateway for establishing secure connections between Azure and on-premises networks, or other Azure VNets. Site-to-Site VPN: Connect on-premises networks to Azure VNets. Point-to-Site VPN: Enable individual clients to connect to the Azure VNet. 5. ExpressRoute ExpressRoute allows for private, dedicated, high-throughput connections between on-premises networks and Azure data centers. Avoids using the public internet, offering greater reliability, faster speeds, and lower latencies. 6. Azure Load Balancer Distributes inbound traffic across multiple VMs, ensuring high availability. Supports both public and internal load balancers. Can be used for balancing traffic in multi-tier applications. 7. Azure Application Gateway A layer-7 load balancer that provides application-level routing decisions. Supports features like SSL termination, cookie-based session affinity, and Web Application Firewall (WAF). 8. Azure Traffic Manager DNS-based traffic load balancer. Directs incoming traffic to the most appropriate endpoint (based on performance, priority, or geographic location). 9. Azure Firewall Managed, cloud-based network security service. Protects Azure resources with high availability and scalability. Offers features like application rules, network rules, and threat intelligence. 10. Azure DNS Azure DNS hosts your DNS domains and manages your DNS records. Allows for easy management of your domain names and supports both public and private DNS zones. 11. Virtual Network Peering Allows linking VNets within the same region or across regions, enabling resources in different VNets to communicate with each other. Provides low-latency and high-bandwidth connections between VNets. 12. Azure Bastion Provides secure and seamless RDP/SSH access to your VMs without exposing them to the public internet. Azure Bastion is deployed inside your VNet. 13. Network Watcher Network Watcher is a tool for monitoring, diagnosing, and gaining insights into your Azure network. It provides various capabilities like packet capture, connection troubleshooting, and VPN diagnostics. Networking Diagram Example +------------+ +-----------+ +-------------------+ | | | | | | | On-prem |&lt;-----&gt;| VPN GW |&lt;----&gt;| Azure VNet | | Network | | | | | +------------+ +-----------+ +-------------------+&#xD;Steps to Create an Azure Virtual Network (VNet) Step 1: Sign in to the Azure Portal Open your web browser and go to the Azure Portal. Sign in with your Azure account credentials. Step 2: Create a Virtual Network In the Azure Portal, on the left-hand menu, select Create a resource. In the search bar, type Virtual Network and select it from the results. Click Create. Configure Virtual Network Subscription: Select the Azure subscription to create the VNet. Resource Group: Choose an existing resource group or create a new one. Name: Enter a name for your Virtual Network (e.g., MyVNet). Region: Select the Azure region where you want to deploy the VNet. Step 3: Configure Address Space Under the IP Addresses tab, you need to configure the address space for the VNet. Enter an address space in CIDR notation (e.g., 10.0.0.0/16). This range must be unique within the network and large enough to contain all your subnets. Step 4: Add Subnets In the same IP Addresses section, scroll down to the Subnets.</description>
+    </item>
+    <item>
+      <title>Part 06</title>
+      <link>https://khushiramsingh680.github.io/Azure/part06/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part06/index.html</guid>
+      <description>Azure Load Balancer Azure Application Gateway Azure Front Door Azure Traffic Manager Azure CDN Azure Load Balancer An Azure Load Balancer is a fully managed service that provides high availability by distributing incoming network traffic across multiple servers or virtual machines (VMs). It helps ensure that your applications remain available, scalable, and fault-tolerant.&#xA;Types of Azure Load Balancer Basic Load Balancer</description>
+    </item>
+    <item>
+      <title>Part 07</title>
+      <link>https://khushiramsingh680.github.io/Azure/part07/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part07/index.html</guid>
+      <description>Azure Monitoring Overview High-Level Architecture of Azure Monitor Enable Insights for a vm Configure Diagnosting settings Create Alerts Log Analytics tutorial Send Activity Logs to Log Analytics Azure Monitoring Overview Azure Monitoring is a comprehensive service that helps you collect, analyze, and act on telemetry data from your Azure resources and applications. It provides insights into the performance and health of your infrastructure, helping you diagnose and resolve issues faster.</description>
+    </item>
+    <item>
+      <title>Part 08</title>
+      <link>https://khushiramsingh680.github.io/Azure/part08/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part08/index.html</guid>
+      <description>Azure Policy Azure Policy is a governance tool in Microsoft Azure that helps organizations enforce compliance with organizational standards and regulatory requirements across their resources. It ensures resources within Azure environments adhere to defined rules and controls.&#xA;Key Features of Azure Policy: Policy Definition: Create or use built-in rules to govern Azure resources. Initiative Definition: Group multiple policies into a single initiative for broader compliance enforcement. Compliance Assessment: Monitor and assess resource compliance in real-time. Policy Assignments: Apply policies at different scopes, including subscription, resource group, or individual resources. Deny or Audit Non-Compliance: Block resource creation or generate alerts for non-compliant resources. Remediation Tasks: Automatically fix non-compliant resources where possible. Common Use Cases: Enforcing resource tagging for better cost management. Restricting virtual machine (VM) sizes to specific SKUs. Enabling security controls, such as encryption and firewalls, by default. Restricting resource locations to specific Azure regions. Ensuring resources use managed disks instead of unmanaged disks. Components of Azure Policy: Definition: A policy rule, written in JSON, describing conditions to enforce. Assignment: Applying the policy definition to a specific scope. Parameters: Allow flexibility in policy definitions for reuse. Effects: The action Azure Policy takes, such as: Deny: Prevent non-compliant resource creation or modification. Audit: Log non-compliant resources for visibility. AuditIfNotExists: Audit resources missing specific conditions. DeployIfNotExists: Deploy required configurations automatically. Examples: Enforce all resources to have a tag like Environment=Production. Restrict deployment to certain Azure regions. Ensure storage accounts have secure transfer enabled. Benefits: Simplifies governance at scale. Ensures compliance with organizational or regulatory requirements. Enhances security and resource consistency. Getting Started: Navigate to Azure Policy in the Azure portal. Select or create a Policy Definition. Assign the policy to a specific scope (e.g., subscription or resource group). Monitor compliance and take remediation actions as needed. title: Azure Cloud Networking&#xA;description: Azure Cloud weight: 3 icon: fab fa-azure</description>
+    </item>
+    <item>
+      <title>Part 09</title>
+      <link>https://khushiramsingh680.github.io/Azure/part09/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part09/index.html</guid>
+      <description>Azure Storage Overview Azure Storage is a highly scalable, durable cloud solution, supporting different data types and use cases, such as analytics, data lakes, and static web content hosting.&#xA;Azure Storage Services 1. Blob Storage Stores unstructured data like images, videos, and backups.&#xA;Blob Types: Block Blobs: Stores large binary data. Append Blobs: Optimized for appending data, ideal for logging. Page Blobs: Primarily used for Azure VM storage disks. Access Tiers: Hot: Frequently accessed data. Cool: Infrequently accessed data, stored at a lower cost. Archive: Rarely accessed data stored at the lowest cost for long-term storage. 2. Azure Files Managed file shares that can be accessed via SMB or NFS protocols.</description>
+    </item>
+    <item>
+      <title>Part 10</title>
+      <link>https://khushiramsingh680.github.io/Azure/part10/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part10/index.html</guid>
+      <description>Azure Backup Azure Backup is a cloud-based data protection solution provided by Microsoft. It is designed to back up and restore data from the Microsoft Azure cloud, ensuring business continuity in case of data loss or disasters. Azure Backup supports a wide range of scenarios, including on-premises systems, Azure VMs, SQL databases, file shares, and more.&#xA;Key Features Centralized Backup Management: Manage backups for on-premises and Azure resources from the Azure portal. Data Security: Encryption in transit and at rest, with the option to use your own keys. Long-Term Retention: Options for long-term data retention to meet regulatory requirements. Cost-Effective: Pay-as-you-go model eliminates the need for on-premises backup infrastructure. Disaster Recovery Integration: Seamless integration with Azure Site Recovery for disaster recovery. Application-Aware Backups: Supports backups for critical workloads like SQL Server, Exchange, and SharePoint. Incremental Backups: Saves storage space and reduces bandwidth consumption. Common Backup Scenarios Azure Virtual Machines&#xA;Back up Azure VMs (Windows and Linux) using the Azure Backup service.</description>
+    </item>
+    <item>
+      <title>Part 11</title>
+      <link>https://khushiramsingh680.github.io/Azure/part11/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part11/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 12</title>
+      <link>https://khushiramsingh680.github.io/Azure/part12/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part12/index.html</guid>
+      <description>App Services</description>
+    </item>
+    <item>
+      <title>Part 13</title>
+      <link>https://khushiramsingh680.github.io/Azure/part13/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part13/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 14</title>
+      <link>https://khushiramsingh680.github.io/Azure/part14/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part14/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 15</title>
+      <link>https://khushiramsingh680.github.io/Azure/part15/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part15/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 16</title>
+      <link>https://khushiramsingh680.github.io/Azure/part16/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part16/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 17</title>
+      <link>https://khushiramsingh680.github.io/Azure/part17/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part17/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 18</title>
+      <link>https://khushiramsingh680.github.io/Azure/part18/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part18/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 19</title>
+      <link>https://khushiramsingh680.github.io/Azure/part19/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part19/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Part 20</title>
+      <link>https://khushiramsingh680.github.io/Azure/part20/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://khushiramsingh680.github.io/Azure/part20/index.html</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

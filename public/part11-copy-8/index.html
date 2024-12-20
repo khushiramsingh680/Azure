@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/Azure/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Azure/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="description" content="Azure Backup Azure Backup is a cloud-based data protection solution provided by Microsoft. It is designed to back up and restore data from the Microsoft Azure cloud, ensuring business continuity in case of data loss or disasters. Azure Backup supports a wide range of scenarios, including on-premises systems, Azure VMs, SQL databases, file shares, and more.
+Key Features Centralized Backup Management: Manage backups for on-premises and Azure resources from the Azure portal. Data Security: Encryption in transit and at rest, with the option to use your own keys. Long-Term Retention: Options for long-term data retention to meet regulatory requirements. Cost-Effective: Pay-as-you-go model eliminates the need for on-premises backup infrastructure. Disaster Recovery Integration: Seamless integration with Azure Site Recovery for disaster recovery. Application-Aware Backups: Supports backups for critical workloads like SQL Server, Exchange, and SharePoint. Incremental Backups: Saves storage space and reduces bandwidth consumption. Common Backup Scenarios Azure Virtual Machines
+Back up Azure VMs (Windows and Linux) using the Azure Backup service.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Part 13 :: Azure Cloud Documentation">
+    <meta name="twitter:description" content="Azure Backup Azure Backup is a cloud-based data protection solution provided by Microsoft. It is designed to back up and restore data from the Microsoft Azure cloud, ensuring business continuity in case of data loss or disasters. Azure Backup supports a wide range of scenarios, including on-premises systems, Azure VMs, SQL databases, file shares, and more.
+Key Features Centralized Backup Management: Manage backups for on-premises and Azure resources from the Azure portal. Data Security: Encryption in transit and at rest, with the option to use your own keys. Long-Term Retention: Options for long-term data retention to meet regulatory requirements. Cost-Effective: Pay-as-you-go model eliminates the need for on-premises backup infrastructure. Disaster Recovery Integration: Seamless integration with Azure Site Recovery for disaster recovery. Application-Aware Backups: Supports backups for critical workloads like SQL Server, Exchange, and SharePoint. Incremental Backups: Saves storage space and reduces bandwidth consumption. Common Backup Scenarios Azure Virtual Machines
+Back up Azure VMs (Windows and Linux) using the Azure Backup service.">
+    <meta property="og:url" content="http://localhost:1313/Azure/part11-copy-8/index.html">
+    <meta property="og:site_name" content="Azure Cloud Documentation">
+    <meta property="og:title" content="Part 13 :: Azure Cloud Documentation">
+    <meta property="og:description" content="Azure Backup Azure Backup is a cloud-based data protection solution provided by Microsoft. It is designed to back up and restore data from the Microsoft Azure cloud, ensuring business continuity in case of data loss or disasters. Azure Backup supports a wide range of scenarios, including on-premises systems, Azure VMs, SQL databases, file shares, and more.
+Key Features Centralized Backup Management: Manage backups for on-premises and Azure resources from the Azure portal. Data Security: Encryption in transit and at rest, with the option to use your own keys. Long-Term Retention: Options for long-term data retention to meet regulatory requirements. Cost-Effective: Pay-as-you-go model eliminates the need for on-premises backup infrastructure. Disaster Recovery Integration: Seamless integration with Azure Site Recovery for disaster recovery. Application-Aware Backups: Supports backups for critical workloads like SQL Server, Exchange, and SharePoint. Incremental Backups: Saves storage space and reduces bandwidth consumption. Common Backup Scenarios Azure Virtual Machines
+Back up Azure VMs (Windows and Linux) using the Azure Backup service.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Azure Cloud Documentation">
+    <meta itemprop="name" content="Part 13 :: Azure Cloud Documentation">
+    <meta itemprop="description" content="Azure Backup Azure Backup is a cloud-based data protection solution provided by Microsoft. It is designed to back up and restore data from the Microsoft Azure cloud, ensuring business continuity in case of data loss or disasters. Azure Backup supports a wide range of scenarios, including on-premises systems, Azure VMs, SQL databases, file shares, and more.
+Key Features Centralized Backup Management: Manage backups for on-premises and Azure resources from the Azure portal. Data Security: Encryption in transit and at rest, with the option to use your own keys. Long-Term Retention: Options for long-term data retention to meet regulatory requirements. Cost-Effective: Pay-as-you-go model eliminates the need for on-premises backup infrastructure. Disaster Recovery Integration: Seamless integration with Azure Site Recovery for disaster recovery. Application-Aware Backups: Supports backups for critical workloads like SQL Server, Exchange, and SharePoint. Incremental Backups: Saves storage space and reduces bandwidth consumption. Common Backup Scenarios Azure Virtual Machines
+Back up Azure VMs (Windows and Linux) using the Azure Backup service.">
+    <meta itemprop="wordCount" content="5029">
+    <title>Part 13 :: Azure Cloud Documentation</title>
+    <link href="../css/fontawesome-all.min.css?1734696797" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1734696797" rel="stylesheet"></noscript>
+    <link href="../css/auto-complete.css?1734696797" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1734696797" rel="stylesheet"></noscript>
+    <link href="../css/perfect-scrollbar.min.css?1734696797" rel="stylesheet">
+    <link href="../css/theme.css?1734696797" rel="stylesheet">
+    <link href="../css/format-html.css?1734696797" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/Azure';
+      window.relearn.min = ``;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="../part11-copy-8/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#azure-backup">Azure Backup</a>
+      <ul>
+        <li><a href="#key-features">Key Features</a></li>
+        <li><a href="#common-backup-scenarios">Common Backup Scenarios</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-can-be-backed-up-with-azure-backup">What Can Be Backed Up with Azure Backup?</a>
+      <ul>
+        <li><a href="#on-premises">On-Premises</a></li>
+        <li><a href="#azure-virtual-machines">Azure Virtual Machines</a></li>
+        <li><a href="#azure-managed-disks">Azure Managed Disks</a></li>
+        <li><a href="#azure-file-shares">Azure File Shares</a></li>
+        <li><a href="#sql-server-in-azure-vms">SQL Server in Azure VMs</a></li>
+        <li><a href="#sap-hana-databases-in-azure-vms">SAP HANA Databases in Azure VMs</a></li>
+        <li><a href="#azure-database-for-postgresql">Azure Database for PostgreSQL</a></li>
+        <li><a href="#azure-blobs">Azure Blobs</a></li>
+        <li><a href="#azure-database-for-postgresql-flexible-server">Azure Database for PostgreSQL Flexible Server</a></li>
+        <li><a href="#azure-kubernetes-service-aks">Azure Kubernetes Service (AKS)</a></li>
+      </ul>
+    </li>
+    <li><a href="#mars-and-mabs-in-azure-backup">MARS and MABS in Azure Backup</a>
+      <ul>
+        <li><a href="#microsoft-azure-recovery-services-mars-agent"><strong>Microsoft Azure Recovery Services (MARS) Agent</strong></a></li>
+        <li><a href="#features-of-mars"><strong>Features of MARS</strong></a></li>
+        <li><a href="#microsoft-azure-backup-server-mabs"><strong>Microsoft Azure Backup Server (MABS)</strong></a></li>
+        <li><a href="#features-of-mabs"><strong>Features of MABS</strong></a></li>
+        <li><a href="#comparison-mars-vs-mabs"><strong>Comparison: MARS vs. MABS</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#recovery-services-vault">Recovery Services vault</a></li>
+    <li><a href="#restore-options">Restore Options</a></li>
+    <li><a href="#asr">ASR</a></li>
+    <li><a href="#business-continuity-center">Business Continuity Center</a>
+      <ul>
+        <li><a href="#learning-objectives">Learning Objectives</a></li>
+      </ul>
+    </li>
+    <li><a href="#1-virtual-network-vnet">1. Virtual Network (VNet)</a>
+      <ul>
+        <li><a href="#key-features-1">Key Features:</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-subnets">2. Subnets</a></li>
+    <li><a href="#3-network-security-group-nsg">3. Network Security Group (NSG)</a>
+      <ul>
+        <li><a href="#rules">Rules:</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-virtual-private-network-vpn">4. Virtual Private Network (VPN)</a></li>
+    <li><a href="#5-expressroute">5. ExpressRoute</a></li>
+    <li><a href="#6-azure-load-balancer">6. Azure Load Balancer</a></li>
+    <li><a href="#7-azure-application-gateway">7. Azure Application Gateway</a></li>
+    <li><a href="#8-azure-traffic-manager">8. Azure Traffic Manager</a></li>
+    <li><a href="#9-azure-firewall">9. Azure Firewall</a></li>
+    <li><a href="#10-azure-dns">10. Azure DNS</a></li>
+    <li><a href="#11-virtual-network-peering">11. Virtual Network Peering</a></li>
+    <li><a href="#12-azure-bastion">12. Azure Bastion</a></li>
+    <li><a href="#13-network-watcher">13. Network Watcher</a>
+      <ul>
+        <li><a href="#networking-diagram-example">Networking Diagram Example</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#step-1-sign-in-to-the-azure-portal">Step 1: Sign in to the Azure Portal</a></li>
+    <li><a href="#step-2-create-a-virtual-network">Step 2: Create a Virtual Network</a>
+      <ul>
+        <li><a href="#configure-virtual-network">Configure Virtual Network</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-3-configure-address-space">Step 3: Configure Address Space</a></li>
+    <li><a href="#step-4-add-subnets">Step 4: Add Subnets</a></li>
+    <li><a href="#step-5-configure-security-optional">Step 5: Configure Security (Optional)</a></li>
+    <li><a href="#step-6-review-and-create">Step 6: Review and Create</a></li>
+    <li><a href="#step-7-verify-the-virtual-network">Step 7: Verify the Virtual Network</a></li>
+    <li><a href="#additional-configurations">Additional Configurations</a>
+      <ul>
+        <li><a href="#step-8-add-network-security-groups-nsgs">Step 8: Add Network Security Groups (NSGs)</a></li>
+        <li><a href="#step-9-enable-vnet-peering-optional">Step 9: Enable VNet Peering (Optional)</a></li>
+      </ul>
+    </li>
+    <li><a href="#example-vnet-configuration">Example VNet Configuration</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#example-1-peering-between-two-vnets-in-the-same-region">Example 1: Peering Between Two VNets in the Same Region</a>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#steps-to-peer-vnet1-with-vnet2">Steps to Peer VNet1 with VNet2</a></li>
+      </ul>
+    </li>
+    <li><a href="#example-2-peering-between-two-vnets-in-different-regions-global-vnet-peering">Example 2: Peering Between Two VNets in Different Regions (Global VNet Peering)</a>
+      <ul>
+        <li><a href="#overview-1">Overview</a></li>
+        <li><a href="#prerequisites-1">Prerequisites</a></li>
+        <li><a href="#steps-to-peer-vnet1-east-us-with-vnet2-west-europe">Steps to Peer VNet1 (East US) with VNet2 (West Europe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#example-3-vnet-peering-with-different-subscriptions">Example 3: VNet Peering with Different Subscriptions</a>
+      <ul>
+        <li><a href="#overview-2">Overview</a></li>
+        <li><a href="#prerequisites-2">Prerequisites</a></li>
+        <li><a href="#steps-to-peer-vnet1-with-vnet2-across-subscriptions">Steps to Peer VNet1 with VNet2 Across Subscriptions</a></li>
+      </ul>
+    </li>
+    <li><a href="#vnet-peering-considerations">VNet Peering Considerations:</a>
+      <ul>
+        <li><a href="#reference-links">Reference Links:</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#overview-3">Overview</a></li>
+    <li><a href="#key-features-of-azure-network-watcher">Key Features of Azure Network Watcher</a></li>
+    <li><a href="#how-to-enable-azure-network-watcher">How to Enable Azure Network Watcher</a>
+      <ul>
+        <li><a href="#step-1-enable-network-watcher">Step 1: Enable Network Watcher</a></li>
+        <li><a href="#step-2-verify-network-watcher-is-enabled">Step 2: Verify Network Watcher is Enabled</a></li>
+      </ul>
+    </li>
+    <li><a href="#network-watcher-tools">Network Watcher Tools</a>
+      <ul>
+        <li><a href="#1-connection-monitor">1. <strong>Connection Monitor</strong></a></li>
+        <li><a href="#2-ip-flow-verify">2. <strong>IP Flow Verify</strong></a></li>
+        <li><a href="#3-topology">3. <strong>Topology</strong></a></li>
+        <li><a href="#4-next-hop">4. <strong>Next Hop</strong></a></li>
+        <li><a href="#5-packet-capture">5. <strong>Packet Capture</strong></a></li>
+        <li><a href="#6-connection-troubleshoot">6. <strong>Connection Troubleshoot</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#example-verify-ip-flow">Example: Verify IP Flow</a>
+      <ul>
+        <li><a href="#scenario">Scenario</a></li>
+        <li><a href="#steps">Steps</a></li>
+      </ul>
+    </li>
+    <li><a href="#pricing">Pricing</a>
+      <ul>
+        <li><a href="#reference-pricing">Reference Pricing:</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference-links-1">Reference Links</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1-virtual-networks-vnet">1. Virtual Networks (VNet)</a>
+      <ul>
+        <li><a href="#common-interview-questions">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-network-security-groups-nsgs">2. Network Security Groups (NSGs)</a>
+      <ul>
+        <li><a href="#common-interview-questions-1">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-public-and-private-ip-addressing">3. Public and Private IP Addressing</a>
+      <ul>
+        <li><a href="#common-interview-questions-2">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-azure-load-balancer">4. Azure Load Balancer</a>
+      <ul>
+        <li><a href="#common-interview-questions-3">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-azure-application-gateway-layer-7-load-balancing">5. Azure Application Gateway (Layer 7 Load Balancing)</a>
+      <ul>
+        <li><a href="#common-interview-questions-4">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-virtual-network-peering">6. Virtual Network Peering</a>
+      <ul>
+        <li><a href="#common-interview-questions-5">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-azure-vpn-gateway">7. Azure VPN Gateway</a>
+      <ul>
+        <li><a href="#common-interview-questions-6">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-azure-dns-and-custom-dns">8. Azure DNS and Custom DNS</a>
+      <ul>
+        <li><a href="#common-interview-questions-7">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-traffic-manager">9. Traffic Manager</a>
+      <ul>
+        <li><a href="#common-interview-questions-8">Common Interview Questions:</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#azure-service-endpoint-vs-private-endpoint">Azure Service Endpoint vs. Private Endpoint</a>
+      <ul>
+        <li><a href="#azure-service-endpoint">Azure Service Endpoint</a></li>
+        <li><a href="#key-features-2">Key Features</a></li>
+        <li><a href="#use-cases">Use Cases</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+      </ul>
+    </li>
+    <li><a href="#azure-private-endpoint">Azure Private Endpoint</a>
+      <ul>
+        <li><a href="#key-features-3">Key Features</a></li>
+        <li><a href="#use-cases-1">Use Cases</a></li>
+        <li><a href="#limitations-1">Limitations</a></li>
+        <li><a href="#comparison-table">Comparison Table</a></li>
+        <li><a href="#choosing-between-service-endpoint-and-private-endpoint">Choosing Between Service Endpoint and Private Endpoint</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Part 13</span><meta itemprop="position" content="1"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part12/index.html" title="Part 12 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><span class="topbar-control"><i class="fa-fw fas fa-chevron-right"></i></span>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="part-13">Part 13</h1>
+
+<hr>
+<h2 id="azure-backup">Azure Backup</h2>
+<p>Azure Backup is a cloud-based data protection solution provided by Microsoft. It is designed to back up and restore data from the Microsoft Azure cloud, ensuring business continuity in case of data loss or disasters. Azure Backup supports a wide range of scenarios, including on-premises systems, Azure VMs, SQL databases, file shares, and more.</p>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li><strong>Centralized Backup Management</strong>: Manage backups for on-premises and Azure resources from the Azure portal.</li>
+<li><strong>Data Security</strong>: Encryption in transit and at rest, with the option to use your own keys.</li>
+<li><strong>Long-Term Retention</strong>: Options for long-term data retention to meet regulatory requirements.</li>
+<li><strong>Cost-Effective</strong>: Pay-as-you-go model eliminates the need for on-premises backup infrastructure.</li>
+<li><strong>Disaster Recovery Integration</strong>: Seamless integration with Azure Site Recovery for disaster recovery.</li>
+<li><strong>Application-Aware Backups</strong>: Supports backups for critical workloads like SQL Server, Exchange, and SharePoint.</li>
+<li><strong>Incremental Backups</strong>: Saves storage space and reduces bandwidth consumption.</li>
+</ul>
+<h3 id="common-backup-scenarios">Common Backup Scenarios</h3>
+<ol>
+<li>
+<p><strong>Azure Virtual Machines</strong><br>
+Back up Azure VMs (Windows and Linux) using the Azure Backup service.</p>
+</li>
+<li>
+<p><strong>On-Premises Servers</strong><br>
+Use the Azure Backup Agent or Azure Backup Server to back up files, folders, and applications from on-premises servers.</p>
+</li>
+<li>
+<p><strong>Azure Files</strong><br>
+Backup and restore Azure file shares with point-in-time recovery.</p>
+</li>
+<li>
+<p><strong>SQL Server Backups</strong><br>
+Backup SQL databases hosted on Azure.</p>
+</li>
+</ol>
+<h3 id="benefits">Benefits</h3>
+<ul>
+<li>Simplified backup management.</li>
+<li>Scalability to meet growing data needs.</li>
+<li>High availability and reliability.</li>
+<li>Compliance with industry regulations.</li>
+</ul>
+<p>For more information, visit the <a href="https://learn.microsoft.com/en-us/azure/backup/" rel="external" target="_blank">Azure Backup documentation</a>.</p>
+<h2 id="what-can-be-backed-up-with-azure-backup">What Can Be Backed Up with Azure Backup?</h2>
+<p>Azure Backup supports a wide variety of backup scenarios for both on-premises and cloud resources. Below is a detailed list of what you can back up:</p>
+<h3 id="on-premises">On-Premises</h3>
+<ul>
+<li><strong>Files, Folders, and System State</strong>:<br>
+Use the Microsoft Azure Recovery Services (MARS) agent.</li>
+<li><strong>On-Premises VMs (Hyper-V and VMware)</strong>:<br>
+Protect these workloads using Data Protection Manager (DPM) or Azure Backup Server (MABS).</li>
+<li><strong>Other On-Premises Workloads</strong>:<br>
+Back up applications like SQL Server, Exchange, and SharePoint using DPM or MABS.</li>
+</ul>
+<h3 id="azure-virtual-machines">Azure Virtual Machines</h3>
+<ul>
+<li><strong>Entire VMs</strong>:<br>
+Back up Windows/Linux VMs using Azure Backup extensions.</li>
+<li><strong>Files, Folders, and System State</strong>:<br>
+Use the MARS agent for more granular backup options.</li>
+</ul>
+<h3 id="azure-managed-disks">Azure Managed Disks</h3>
+<ul>
+<li>Back up <strong>Azure Managed Disks</strong> directly.</li>
+</ul>
+<h3 id="azure-file-shares">Azure File Shares</h3>
+<ul>
+<li>Back up <strong>Azure File Shares</strong> to a storage account.</li>
+</ul>
+<h3 id="sql-server-in-azure-vms">SQL Server in Azure VMs</h3>
+<ul>
+<li>Back up <strong>SQL Server Databases</strong> running on Azure Virtual Machines.</li>
+</ul>
+<h3 id="sap-hana-databases-in-azure-vms">SAP HANA Databases in Azure VMs</h3>
+<ul>
+<li>Back up <strong>SAP HANA Databases</strong> running on Azure VMs.</li>
+</ul>
+<h3 id="azure-database-for-postgresql">Azure Database for PostgreSQL</h3>
+<ul>
+<li>Back up <strong>Azure Database for PostgreSQL Servers</strong> with retention for up to 10 years.</li>
+</ul>
+<h3 id="azure-blobs">Azure Blobs</h3>
+<ul>
+<li>Operational backups for <strong>Azure Blobs</strong> provide point-in-time recovery.</li>
+</ul>
+<h3 id="azure-database-for-postgresql-flexible-server">Azure Database for PostgreSQL Flexible Server</h3>
+<ul>
+<li>Back up <strong>Azure Database for PostgreSQL Flexible Server</strong> (currently in preview).</li>
+</ul>
+<h3 id="azure-kubernetes-service-aks">Azure Kubernetes Service (AKS)</h3>
+<ul>
+<li>Back up workloads and configurations in <strong>Azure Kubernetes Service (AKS)</strong> clusters.</li>
+</ul>
+<p>For more information, visit the <a href="https://learn.microsoft.com/en-us/azure/backup/" rel="external" target="_blank">Azure Backup documentation</a>.
+<a href="#R-image-2cf383643ea222d33a4d94622b213490" class="lightbox-link"><img alt="backup" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup01.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2cf383643ea222d33a4d94622b213490"><img alt="backup" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup01.png"></a></p>
+<h2 id="mars-and-mabs-in-azure-backup">MARS and MABS in Azure Backup</h2>
+<p>Azure Backup provides different tools for managing on-premises backups, tailored to various use cases. Two commonly used tools are <strong>MARS</strong> and <strong>MABS</strong>.</p>
+<h3 id="microsoft-azure-recovery-services-mars-agent"><strong>Microsoft Azure Recovery Services (MARS) Agent</strong></h3>
+<p>The MARS agent is designed for simple backup scenarios, specifically for protecting files, folders, and system states on individual machines.</p>
+<h3 id="features-of-mars"><strong>Features of MARS</strong></h3>
+<ul>
+<li><strong>Supported Workloads</strong>: Files, folders, and system state.</li>
+<li><strong>Backup Target</strong>: Azure Recovery Services Vault.</li>
+<li><strong>Supported Systems</strong>: Windows Server (various versions) and Windows clients (e.g., Windows 10, 11).</li>
+<li><strong>Granularity</strong>: File and folder level backup.</li>
+<li><strong>Usage</strong>:
+<ul>
+<li>Ideal for small-scale backup needs or individual servers.</li>
+<li>No dependency on on-premises infrastructure like DPM or MABS.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="microsoft-azure-backup-server-mabs"><strong>Microsoft Azure Backup Server (MABS)</strong></h3>
+<p>MABS is a more robust solution for larger-scale backup needs. It provides enterprise-grade protection for a variety of on-premises workloads.</p>
+<h3 id="features-of-mabs"><strong>Features of MABS</strong></h3>
+<ul>
+<li><strong>Supported Workloads</strong>:
+<ul>
+<li>Files and folders.</li>
+<li>On-premises VMs (Hyper-V and VMware).</li>
+<li>Application-aware backups for workloads like SQL Server, Exchange, and SharePoint.</li>
+</ul>
+</li>
+<li><strong>Backup Target</strong>:
+<ul>
+<li>Azure Recovery Services Vault for cloud backup.</li>
+<li>Local disk for on-premises backup.</li>
+</ul>
+</li>
+<li><strong>System Requirements</strong>:
+<ul>
+<li>Requires a dedicated Windows Server to run MABS.</li>
+</ul>
+</li>
+<li><strong>Granularity</strong>:
+<ul>
+<li>Application and VM-level protection in addition to file-level backup.</li>
+</ul>
+</li>
+<li><strong>Usage</strong>:
+<ul>
+<li>Suitable for larger environments with diverse workloads.</li>
+<li>Acts as a bridge between on-premises workloads and Azure for backup.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="comparison-mars-vs-mabs"><strong>Comparison: MARS vs. MABS</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>MARS</th>
+          <th>MABS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Workloads Supported</strong></td>
+          <td>Files, folders, system state</td>
+          <td>Files, folders, VMs, applications</td>
+      </tr>
+      <tr>
+          <td><strong>Backup Target</strong></td>
+          <td>Azure Recovery Services Vault</td>
+          <td>Azure Vault + Local Disk</td>
+      </tr>
+      <tr>
+          <td><strong>Granularity</strong></td>
+          <td>File-level backup</td>
+          <td>Application and VM-level backup</td>
+      </tr>
+      <tr>
+          <td><strong>Ideal Use Case</strong></td>
+          <td>Individual machines</td>
+          <td>Enterprise environments</td>
+      </tr>
+      <tr>
+          <td><strong>Infrastructure Requirements</strong></td>
+          <td>No dedicated infrastructure</td>
+          <td>Requires dedicated server</td>
+      </tr>
+  </tbody>
+</table>
+<p>For more details, visit the <a href="https://learn.microsoft.com/en-us/azure/backup/" rel="external" target="_blank">Azure Backup documentation</a>.</p>
+<h2 id="recovery-services-vault">Recovery Services vault</h2>
+<ul>
+<li>
+<p>Create Recovery service
+<a href="#R-image-2a9c15ec1acdd63fb041e246d253a970" class="lightbox-link"><img alt="backup05" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup05.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2a9c15ec1acdd63fb041e246d253a970"><img alt="backup05" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup05.png"></a></p>
+</li>
+<li>
+<p>Configure Redundancy
+<a href="#R-image-74929072781026fe8fce7017c48e742f" class="lightbox-link"><img alt="backup05" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup06.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-74929072781026fe8fce7017c48e742f"><img alt="backup05" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup06.png"></a></p>
+</li>
+<li>
+<p>Take Backup
+<a href="#R-image-f94789398c2d6edaf876599d0a200ce6" class="lightbox-link"><img alt="backup" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup10.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f94789398c2d6edaf876599d0a200ce6"><img alt="backup" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup10.png"></a></p>
+</li>
+</ul>
+<p><a href="#R-image-8096ce80ed9be1e374c7df0d44ee0853" class="lightbox-link"><img alt="backup" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup11.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8096ce80ed9be1e374c7df0d44ee0853"><img alt="backup" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup11.png"></a></p>
+<h2 id="restore-options">Restore Options</h2>
+<p><a href="#R-image-e21de9ca61ad361ea495576c0bbf8daf" class="lightbox-link"><img alt="backup" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup12.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e21de9ca61ad361ea495576c0bbf8daf"><img alt="backup" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup12.png"></a></p>
+<ul>
+<li>Check backed up items</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Restore Option</strong></th>
+          <th><strong>Details</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Create a new VM</strong></td>
+          <td>Quickly creates and gets a basic VM up and running from a restore point.<!-- raw HTML omitted --><!-- raw HTML omitted -->- Specify a name for the VM and select the resource group and virtual network (VNet) in which it will be placed.<!-- raw HTML omitted -->- The new VM must be created in the same region as the source VM.<!-- raw HTML omitted -->- If a VM restore fails (e.g., due to unavailable Azure VM SKU), disks are restored in the specified resource group.</td>
+      </tr>
+      <tr>
+          <td><strong>Restore Disk</strong></td>
+          <td>Restores a VM disk, which can then be used to create a new VM.<!-- raw HTML omitted --><!-- raw HTML omitted -->- Azure Backup provides a template to help customize and create a VM.<!-- raw HTML omitted -->- The restore job generates a downloadable template for specifying custom VM settings.<!-- raw HTML omitted -->- Disks are copied to the specified Resource Group.<!-- raw HTML omitted -->- Disks can be attached to an existing VM or used to create a new VM via PowerShell.<!-- raw HTML omitted -->- Useful for customizing or adding new configurations.</td>
+      </tr>
+      <tr>
+          <td><strong>Replace Existing</strong></td>
+          <td>Restores a disk to replace a disk on an existing VM.<!-- raw HTML omitted --><!-- raw HTML omitted -->- The current VM must exist.<!-- raw HTML omitted -->- A snapshot of the VM is taken before replacement and retained in the vault.<!-- raw HTML omitted -->- Original disks are retained for manual deletion if needed.<!-- raw HTML omitted -->- Supported for unencrypted managed VMs with linked resources (e.g., managed identities).<!-- raw HTML omitted -->- Not supported for classic, unmanaged, or generalized VMs.</td>
+      </tr>
+      <tr>
+          <td><strong>Cross Region Restore</strong></td>
+          <td>Restores VMs or disks in a secondary (paired) Azure region.<!-- raw HTML omitted --><!-- raw HTML omitted -->- Vault-tier backups are replicated to the secondary region (snapshots are not replicated).<!-- raw HTML omitted -->- Supports &ldquo;Create a VM&rdquo; and &ldquo;Restore Disks&rdquo; options.<!-- raw HTML omitted -->- Not supported for the &ldquo;Replace Existing&rdquo; option.</td>
+      </tr>
+      <tr>
+          <td><strong>Cross Subscription Restore</strong></td>
+          <td>Restores Azure VMs or disks to a different subscription within the same tenant.<!-- raw HTML omitted --><!-- raw HTML omitted -->- Enabled via the Cross Subscription Restore property in the Recovery Services vault.<!-- raw HTML omitted -->- Supported only for managed VMs.<!-- raw HTML omitted -->- Not supported for snapshot-tier recovery points or unmanaged/ADE-encrypted VMs.</td>
+      </tr>
+      <tr>
+          <td><strong>Cross Zonal Restore</strong></td>
+          <td>Restores VMs or disks to different Azure zones.<!-- raw HTML omitted --><!-- raw HTML omitted -->- Restores logical zones as per the Azure subscription.<!-- raw HTML omitted -->- Supported for managed VMs in vaults with Zonal-Redundant Storage (ZRS) or Cross Region Restore (CRR).<!-- raw HTML omitted -->- Not supported for snapshot-tier restore points or encrypted VMs.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="asr">ASR</h2>
+<p><a href="#R-image-77081f010e20d9da273f374fbe6b2b89" class="lightbox-link"><img alt="nackup" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/backup13.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-77081f010e20d9da273f374fbe6b2b89"><img alt="nackup" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/backup13.png"></a></p>
+<p><a href="https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-support-matrix#replicated-machine-operating-systems" rel="external" target="_blank">Support os</a></p>
+<h2 id="business-continuity-center">Business Continuity Center</h2>
+<p><a href="#R-image-d7f1202f65763a7ebf36ed35bbccff54" class="lightbox-link"><img alt="bcc" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="../images/bcc.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d7f1202f65763a7ebf36ed35bbccff54"><img alt="bcc" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="../images/bcc.png"></a></p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>
+<p><strong>Creating Recovery Service Vault</strong><br>
+Learn how to set up a Recovery Services Vault, a foundational step for disaster recovery in Azure.</p>
+</li>
+<li>
+<p><strong>Replicate Azure VM to Secondary Region</strong><br>
+Configure Azure VMs to replicate data and services to a secondary region for high availability.</p>
+</li>
+<li>
+<p><strong>Test Failover</strong><br>
+Simulate a failover scenario to validate the disaster recovery setup without impacting production.</p>
+</li>
+<li>
+<p><strong>Planned Failover</strong><br>
+Execute a planned failover for maintenance or other needs while minimizing disruptions.</p>
+</li>
+<li>
+<p><strong>Failback</strong><br>
+Return operations to the primary region after resolving the original issue or completing planned maintenance.</p>
+</li>
+</ul>
+<hr>
+<p>title: Azure Cloud Networking<br>
+description: Azure Cloud
+weight: 3
+icon:  fab fa-azure</p>
+<hr>
+<h2 id="1-virtual-network-vnet">1. Virtual Network (VNet)</h2>
+<ul>
+<li><strong>Azure Virtual Network (VNet)</strong> is the fundamental building block for private networks in Azure.</li>
+<li>VNets enable Azure resources, like Virtual Machines (VMs), to securely communicate with each other, the internet, and on-premises networks.</li>
+<li>VNets can be segmented into <strong>subnets</strong> for better management and security.</li>
+</ul>
+<h3 id="key-features-1">Key Features:</h3>
+<ul>
+<li><strong>Isolation and segmentation</strong>: You can isolate VNets from each other.</li>
+<li><strong>Subnets</strong>: Allow partitioning of a VNet into smaller network segments.</li>
+<li><strong>Network Security Groups (NSGs)</strong>: Control inbound and outbound traffic rules.</li>
+<li><strong>Route Tables</strong>: Direct network traffic.</li>
+</ul>
+<h2 id="2-subnets">2. Subnets</h2>
+<ul>
+<li><strong>Subnets</strong> allow you to divide your VNet into smaller, isolated sections.</li>
+<li>Each subnet can have its own Network Security Group (NSG) to control traffic.</li>
+<li>Subnets also allow for organizing resources into distinct groups based on service types.</li>
+</ul>
+<h2 id="3-network-security-group-nsg">3. Network Security Group (NSG)</h2>
+<ul>
+<li>NSGs are a set of firewall rules that control traffic to and from VMs.</li>
+<li>NSGs can be applied at the subnet level or directly to the VM&rsquo;s network interface.</li>
+</ul>
+<h3 id="rules">Rules:</h3>
+<ul>
+<li><strong>Inbound rules</strong>: Define the traffic allowed to the VM.</li>
+<li><strong>Outbound rules</strong>: Define the traffic allowed from the VM.</li>
+</ul>
+<h2 id="4-virtual-private-network-vpn">4. Virtual Private Network (VPN)</h2>
+<ul>
+<li>Azure provides <strong>VPN Gateway</strong> for establishing secure connections between Azure and on-premises networks, or other Azure VNets.</li>
+<li><strong>Site-to-Site VPN</strong>: Connect on-premises networks to Azure VNets.</li>
+<li><strong>Point-to-Site VPN</strong>: Enable individual clients to connect to the Azure VNet.</li>
+</ul>
+<h2 id="5-expressroute">5. ExpressRoute</h2>
+<ul>
+<li><strong>ExpressRoute</strong> allows for private, dedicated, high-throughput connections between on-premises networks and Azure data centers.</li>
+<li>Avoids using the public internet, offering greater reliability, faster speeds, and lower latencies.</li>
+</ul>
+<h2 id="6-azure-load-balancer">6. Azure Load Balancer</h2>
+<ul>
+<li>Distributes inbound traffic across multiple VMs, ensuring high availability.</li>
+<li>Supports both <strong>public</strong> and <strong>internal</strong> load balancers.</li>
+<li>Can be used for balancing traffic in multi-tier applications.</li>
+</ul>
+<h2 id="7-azure-application-gateway">7. Azure Application Gateway</h2>
+<ul>
+<li>A layer-7 load balancer that provides application-level routing decisions.</li>
+<li>Supports features like <strong>SSL termination</strong>, <strong>cookie-based session affinity</strong>, and <strong>Web Application Firewall (WAF)</strong>.</li>
+</ul>
+<h2 id="8-azure-traffic-manager">8. Azure Traffic Manager</h2>
+<ul>
+<li>DNS-based traffic load balancer.</li>
+<li>Directs incoming traffic to the most appropriate endpoint (based on performance, priority, or geographic location).</li>
+</ul>
+<h2 id="9-azure-firewall">9. Azure Firewall</h2>
+<ul>
+<li>Managed, cloud-based network security service.</li>
+<li>Protects Azure resources with high availability and scalability.</li>
+<li>Offers features like <strong>application rules</strong>, <strong>network rules</strong>, and <strong>threat intelligence</strong>.</li>
+</ul>
+<h2 id="10-azure-dns">10. Azure DNS</h2>
+<ul>
+<li><strong>Azure DNS</strong> hosts your DNS domains and manages your DNS records.</li>
+<li>Allows for easy management of your domain names and supports both public and private DNS zones.</li>
+</ul>
+<h2 id="11-virtual-network-peering">11. Virtual Network Peering</h2>
+<ul>
+<li>Allows linking VNets within the same region or across regions, enabling resources in different VNets to communicate with each other.</li>
+<li>Provides low-latency and high-bandwidth connections between VNets.</li>
+</ul>
+<h2 id="12-azure-bastion">12. Azure Bastion</h2>
+<ul>
+<li>Provides secure and seamless RDP/SSH access to your VMs without exposing them to the public internet.</li>
+<li><strong>Azure Bastion</strong> is deployed inside your VNet.</li>
+</ul>
+<h2 id="13-network-watcher">13. Network Watcher</h2>
+<ul>
+<li><strong>Network Watcher</strong> is a tool for monitoring, diagnosing, and gaining insights into your Azure network.</li>
+<li>It provides various capabilities like <strong>packet capture</strong>, <strong>connection troubleshooting</strong>, and <strong>VPN diagnostics</strong>.</li>
+</ul>
+<hr>
+<h3 id="networking-diagram-example">Networking Diagram Example</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span> +------------+       +-----------+      +-------------------+
+</span></span><span style="display:flex;"><span> |            |       |           |      |                   |
+</span></span><span style="display:flex;"><span> |  On-prem   |&lt;-----&gt;|  VPN GW    |&lt;----&gt;|  Azure VNet       |
+</span></span><span style="display:flex;"><span> |  Network   |       |           |      |                   |
+</span></span><span style="display:flex;"><span> +------------+       +-----------+      +-------------------+</span></span></code></pre></div>
+<h1 id="steps-to-create-an-azure-virtual-network-vnet">Steps to Create an Azure Virtual Network (VNet)</h1>
+<h2 id="step-1-sign-in-to-the-azure-portal">Step 1: Sign in to the Azure Portal</h2>
+<ol>
+<li>Open your web browser and go to the <a href="https://portal.azure.com" rel="external" target="_blank">Azure Portal</a>.</li>
+<li>Sign in with your Azure account credentials.</li>
+</ol>
+<h2 id="step-2-create-a-virtual-network">Step 2: Create a Virtual Network</h2>
+<ol>
+<li>In the Azure Portal, on the left-hand menu, select <strong>Create a resource</strong>.</li>
+<li>In the search bar, type <strong>Virtual Network</strong> and select it from the results.</li>
+<li>Click <strong>Create</strong>.</li>
+</ol>
+<h3 id="configure-virtual-network">Configure Virtual Network</h3>
+<ul>
+<li><strong>Subscription</strong>: Select the Azure subscription to create the VNet.</li>
+<li><strong>Resource Group</strong>: Choose an existing resource group or create a new one.</li>
+<li><strong>Name</strong>: Enter a name for your Virtual Network (e.g., <code>MyVNet</code>).</li>
+<li><strong>Region</strong>: Select the Azure region where you want to deploy the VNet.</li>
+</ul>
+<h2 id="step-3-configure-address-space">Step 3: Configure Address Space</h2>
+<ol>
+<li>Under the <strong>IP Addresses</strong> tab, you need to configure the address space for the VNet.</li>
+<li>Enter an address space in <strong>CIDR</strong> notation (e.g., <code>10.0.0.0/16</code>).
+<ul>
+<li>This range must be unique within the network and large enough to contain all your subnets.</li>
+</ul>
+</li>
+</ol>
+<h2 id="step-4-add-subnets">Step 4: Add Subnets</h2>
+<ol>
+<li>
+<p>In the same <strong>IP Addresses</strong> section, scroll down to the <strong>Subnets</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add Subnet</strong>.</p>
+<ul>
+<li><strong>Name</strong>: Give a name to your subnet (e.g., <code>FrontEndSubnet</code>).</li>
+<li><strong>Subnet Address Range</strong>: Enter a subnet address range (e.g., <code>10.0.1.0/24</code>).</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Add</strong> to add the subnet.</p>
+<p><em>(Repeat this step if you want to add more subnets.)</em></p>
+</li>
+</ol>
+<h2 id="step-5-configure-security-optional">Step 5: Configure Security (Optional)</h2>
+<ol>
+<li>
+<p>In the <strong>Security</strong> tab, you can enable security features:</p>
+<ul>
+<li><strong>BastionHost</strong>: Secure RDP/SSH access to VMs without public IP.</li>
+<li><strong>Firewall</strong>: Add Azure Firewall to control traffic to/from the VNet.</li>
+<li><strong>DDoS protection</strong>: Enable Standard DDoS protection for better security.</li>
+</ul>
+</li>
+<li>
+<p>Configure these options as required and proceed to the next step.</p>
+</li>
+</ol>
+<h2 id="step-6-review-and-create">Step 6: Review and Create</h2>
+<ol>
+<li>Review all the settings and ensure that everything is configured correctly.</li>
+<li>Click <strong>Review + Create</strong>.</li>
+<li>Once validation is passed, click <strong>Create</strong> to deploy the VNet.</li>
+</ol>
+<h2 id="step-7-verify-the-virtual-network">Step 7: Verify the Virtual Network</h2>
+<ol>
+<li>After the deployment is complete, navigate to <strong>Resource Groups</strong> and select the resource group where the VNet was created.</li>
+<li>Click on the <strong>Virtual Network</strong> to see the details of the newly created VNet.</li>
+<li>Verify the <strong>Address Space</strong>, <strong>Subnets</strong>, and other settings to ensure they are correctly configured.</li>
+</ol>
+<hr>
+<h2 id="additional-configurations">Additional Configurations</h2>
+<h3 id="step-8-add-network-security-groups-nsgs">Step 8: Add Network Security Groups (NSGs)</h3>
+<ol>
+<li>In the VNet page, select <strong>Subnets</strong>.</li>
+<li>Click on the desired subnet to attach a <strong>Network Security Group (NSG)</strong>.</li>
+<li>Select an existing NSG or create a new one to define inbound/outbound rules.</li>
+</ol>
+<h3 id="step-9-enable-vnet-peering-optional">Step 9: Enable VNet Peering (Optional)</h3>
+<ol>
+<li>If you want to connect this VNet to another VNet, go to the <strong>Peerings</strong> section.</li>
+<li>Click <strong>Add Peering</strong>.
+<ul>
+<li><strong>Name</strong>: Enter a name for the peering connection.</li>
+<li><strong>Virtual Network Deployment Model</strong>: Select the deployment model (usually Resource Manager).</li>
+<li><strong>Peering Status</strong>: Choose the desired configuration (Allow/Block traffic).</li>
+</ul>
+</li>
+<li>Click <strong>Add</strong> to establish peering.</li>
+</ol>
+<hr>
+<h2 id="example-vnet-configuration">Example VNet Configuration</h2>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>VNet: MyVNet
+</span></span><span style="display:flex;"><span>Address Space: 10.0.0.0/16
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Subnets:
+</span></span><span style="display:flex;"><span>  - FrontEndSubnet: 10.0.1.0/24
+</span></span><span style="display:flex;"><span>  - BackEndSubnet: 10.0.2.0/24
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NSGs:
+</span></span><span style="display:flex;"><span>  - FrontEndNSG: Applied to FrontEndSubnet
+</span></span><span style="display:flex;"><span>  - BackEndNSG: Applied to BackEndSubnet</span></span></code></pre></div>
+<h1 id="azure-vnet-peering-examples">Azure VNet Peering Examples</h1>
+<h2 id="example-1-peering-between-two-vnets-in-the-same-region">Example 1: Peering Between Two VNets in the Same Region</h2>
+<h3 id="overview">Overview</h3>
+<ul>
+<li><strong>VNet1</strong> and <strong>VNet2</strong> are located in the same region.</li>
+<li>The goal is to enable communication between resources in both VNets via VNet peering.</li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><strong>VNet1</strong> Address Space: <code>10.0.0.0/16</code></li>
+<li><strong>VNet2</strong> Address Space: <code>10.1.0.0/16</code></li>
+<li>Both VNets should not have overlapping address ranges.</li>
+</ul>
+<h3 id="steps-to-peer-vnet1-with-vnet2">Steps to Peer VNet1 with VNet2</h3>
+<ol>
+<li>
+<p><strong>Go to VNet1</strong>:</p>
+<ul>
+<li>In the Azure Portal, navigate to <strong>Virtual Networks</strong> and select <strong>VNet1</strong>.</li>
+<li>In the left-hand menu, select <strong>Peerings</strong>.</li>
+<li>Click <strong>Add Peering</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Peering from VNet1 to VNet2</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>VNet1-to-VNet2</code></li>
+<li><strong>Peering Remote Virtual Network</strong>: Select <strong>VNet2</strong>.</li>
+<li><strong>Traffic to Remote Network</strong>: Select <strong>Allow traffic</strong> from VNet1 to VNet2.</li>
+<li><strong>Traffic Forwarding</strong>: Enable <strong>Allow Gateway Transit</strong> (if using one VNet’s gateway to access the internet).</li>
+<li><strong>Allow Virtual Network Access</strong>: Yes.</li>
+<li>Click <strong>Add</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Go to VNet2</strong>:</p>
+<ul>
+<li>In the Azure Portal, navigate to <strong>Virtual Networks</strong> and select <strong>VNet2</strong>.</li>
+<li>In the left-hand menu, select <strong>Peerings</strong>.</li>
+<li>Click <strong>Add Peering</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Peering from VNet2 to VNet1</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>VNet2-to-VNet1</code></li>
+<li><strong>Peering Remote Virtual Network</strong>: Select <strong>VNet1</strong>.</li>
+<li><strong>Traffic to Remote Network</strong>: Select <strong>Allow traffic</strong> from VNet2 to VNet1.</li>
+<li><strong>Allow Virtual Network Access</strong>: Yes.</li>
+<li>Click <strong>Add</strong>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="example-2-peering-between-two-vnets-in-different-regions-global-vnet-peering">Example 2: Peering Between Two VNets in Different Regions (Global VNet Peering)</h2>
+<h3 id="overview-1">Overview</h3>
+<ul>
+<li><strong>VNet1</strong> is in the East US region.</li>
+<li><strong>VNet2</strong> is in the West Europe region.</li>
+<li>We will establish <strong>Global VNet Peering</strong> between these two VNets.</li>
+</ul>
+<h3 id="prerequisites-1">Prerequisites</h3>
+<ul>
+<li><strong>VNet1</strong> Address Space: <code>10.0.0.0/16</code> (East US)</li>
+<li><strong>VNet2</strong> Address Space: <code>10.2.0.0/16</code> (West Europe)</li>
+<li>Both VNets must not have overlapping IP address ranges.</li>
+</ul>
+<h3 id="steps-to-peer-vnet1-east-us-with-vnet2-west-europe">Steps to Peer VNet1 (East US) with VNet2 (West Europe)</h3>
+<ol>
+<li>
+<p><strong>Go to VNet1 (East US)</strong>:</p>
+<ul>
+<li>In the Azure Portal, navigate to <strong>Virtual Networks</strong> and select <strong>VNet1</strong> (in the East US region).</li>
+<li>In the left-hand menu, select <strong>Peerings</strong>.</li>
+<li>Click <strong>Add Peering</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Peering from VNet1 to VNet2</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>VNet1-to-VNet2</code></li>
+<li><strong>Peering Remote Virtual Network</strong>: Select <strong>VNet2</strong> (in the West Europe region).</li>
+<li><strong>Traffic to Remote Network</strong>: Allow traffic from VNet1 to VNet2.</li>
+<li><strong>Allow Gateway Transit</strong>: Enable this if needed (for shared VPN gateways).</li>
+<li>Click <strong>Add</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Go to VNet2 (West Europe)</strong>:</p>
+<ul>
+<li>In the Azure Portal, navigate to <strong>Virtual Networks</strong> and select <strong>VNet2</strong> (in the West Europe region).</li>
+<li>In the left-hand menu, select <strong>Peerings</strong>.</li>
+<li>Click <strong>Add Peering</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Peering from VNet2 to VNet1</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>VNet2-to-VNet1</code></li>
+<li><strong>Peering Remote Virtual Network</strong>: Select <strong>VNet1</strong> (in the East US region).</li>
+<li><strong>Traffic to Remote Network</strong>: Allow traffic from VNet2 to VNet1.</li>
+<li><strong>Allow Gateway Transit</strong>: Enable this if needed.</li>
+<li>Click <strong>Add</strong>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="example-3-vnet-peering-with-different-subscriptions">Example 3: VNet Peering with Different Subscriptions</h2>
+<h3 id="overview-2">Overview</h3>
+<ul>
+<li><strong>VNet1</strong> and <strong>VNet2</strong> are located in different subscriptions.</li>
+<li>The goal is to peer these VNets for communication.</li>
+</ul>
+<h3 id="prerequisites-2">Prerequisites</h3>
+<ul>
+<li><strong>VNet1</strong> Address Space: <code>10.0.0.0/16</code></li>
+<li><strong>VNet2</strong> Address Space: <code>10.3.0.0/16</code></li>
+<li>Both VNets must belong to separate Azure subscriptions, but they must not have overlapping address ranges.</li>
+<li>Ensure the <strong>subscriptions</strong> are associated with the same Azure Active Directory (AAD) tenant.</li>
+</ul>
+<h3 id="steps-to-peer-vnet1-with-vnet2-across-subscriptions">Steps to Peer VNet1 with VNet2 Across Subscriptions</h3>
+<ol>
+<li>
+<p><strong>Go to VNet1 (Subscription A)</strong>:</p>
+<ul>
+<li>Navigate to <strong>Virtual Networks</strong> and select <strong>VNet1</strong>.</li>
+<li>In the left-hand menu, select <strong>Peerings</strong>.</li>
+<li>Click <strong>Add Peering</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Peering from VNet1 to VNet2 (in a different subscription)</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>VNet1-to-VNet2</code></li>
+<li><strong>Remote Virtual Network</strong>: Use the <strong>Resource ID</strong> of VNet2.
+<ul>
+<li>To get the resource ID of VNet2, go to VNet2 in <strong>Subscription B</strong>, click on <strong>Properties</strong>, and copy the <strong>Resource ID</strong>.</li>
+</ul>
+</li>
+<li><strong>Allow Virtual Network Access</strong>: Yes.</li>
+<li><strong>Traffic to Remote Network</strong>: Allow traffic from VNet1 to VNet2.</li>
+<li>Click <strong>Add</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Go to VNet2 (Subscription B)</strong>:</p>
+<ul>
+<li>Navigate to <strong>Virtual Networks</strong> and select <strong>VNet2</strong>.</li>
+<li>In the left-hand menu, select <strong>Peerings</strong>.</li>
+<li>Click <strong>Add Peering</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure Peering from VNet2 to VNet1 (in a different subscription)</strong>:</p>
+<ul>
+<li><strong>Name</strong>: <code>VNet2-to-VNet1</code></li>
+<li><strong>Remote Virtual Network</strong>: Use the <strong>Resource ID</strong> of VNet1 (from Subscription A).</li>
+<li><strong>Allow Virtual Network Access</strong>: Yes.</li>
+<li><strong>Traffic to Remote Network</strong>: Allow traffic from VNet2 to VNet1.</li>
+<li>Click <strong>Add</strong>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="vnet-peering-considerations">VNet Peering Considerations:</h2>
+<ul>
+<li><strong>No Overlapping IP Address Ranges</strong>: VNets being peered cannot have overlapping address spaces.</li>
+<li><strong>Data Transfer Costs</strong>: Data transferred between peered VNets is charged, especially across regions (Global Peering).</li>
+<li><strong>Gateway Transit</strong>: If you want one VNet to use another VNet’s VPN gateway, enable <strong>Gateway Transit</strong> during peering setup.</li>
+<li><strong>Security</strong>: Use <strong>Network Security Groups (NSGs)</strong> to control traffic between peered VNets.</li>
+</ul>
+<hr>
+<h3 id="reference-links">Reference Links:</h3>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview" rel="external" target="_blank">Azure VNet Peering</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/virtual-network/global-vnet-peering" rel="external" target="_blank">Global VNet Peering</a></li>
+</ul>
+<h1 id="azure-network-watcher">Azure Network Watcher</h1>
+<h2 id="overview-3">Overview</h2>
+<p><strong>Azure Network Watcher</strong> is a regional service that provides tools to monitor, diagnose, and gain insights into your Azure Virtual Network (VNet). It helps troubleshoot network connectivity issues, analyze network performance, and understand network traffic in Azure.</p>
+<hr>
+<h2 id="key-features-of-azure-network-watcher">Key Features of Azure Network Watcher</h2>
+<ol>
+<li><strong>Connection Monitor</strong>: Monitor the connectivity status between an Azure virtual machine and an endpoint.</li>
+<li><strong>IP Flow Verify</strong>: Check if traffic is allowed or denied to or from a virtual machine, based on the security group rules.</li>
+<li><strong>Network Performance Monitor</strong>: Measure the performance between VNets, regions, or the on-premises environment.</li>
+<li><strong>Topology</strong>: Visualize the network topology of resources within a VNet.</li>
+<li><strong>Next Hop</strong>: Analyze the next hop for network traffic from a virtual machine.</li>
+<li><strong>Security Group View</strong>: List the network security group (NSG) rules associated with a virtual machine.</li>
+<li><strong>Packet Capture</strong>: Capture packets to and from a virtual machine for analysis.</li>
+<li><strong>Diagnostic Logs</strong>: View diagnostic logs for network resources like NSGs, Load Balancers, and Gateways.</li>
+<li><strong>Connection Troubleshoot</strong>: Test the connection between a source and destination to identify any bottlenecks.</li>
+</ol>
+<hr>
+<h2 id="how-to-enable-azure-network-watcher">How to Enable Azure Network Watcher</h2>
+<h3 id="step-1-enable-network-watcher">Step 1: Enable Network Watcher</h3>
+<ol>
+<li>In the <a href="https://portal.azure.com" rel="external" target="_blank">Azure Portal</a>, search for <strong>Network Watcher</strong>.</li>
+<li>Select <strong>Network Watcher</strong> from the list.</li>
+<li>Choose the <strong>Subscription</strong> and <strong>Region</strong> where your resources are located.</li>
+<li>If Network Watcher is not enabled in your region, click on <strong>Enable</strong> to enable it for that region.</li>
+</ol>
+<h3 id="step-2-verify-network-watcher-is-enabled">Step 2: Verify Network Watcher is Enabled</h3>
+<ol>
+<li>After enabling, go to the <strong>Network Watcher</strong> resource in your selected region.</li>
+<li>In the left-hand menu, you will see a list of tools like <strong>Connection Monitor</strong>, <strong>IP Flow Verify</strong>, <strong>Topology</strong>, etc.</li>
+</ol>
+<hr>
+<h2 id="network-watcher-tools">Network Watcher Tools</h2>
+<h3 id="1-connection-monitor">1. <strong>Connection Monitor</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Monitor the connectivity between a virtual machine and a given destination (another VM, an on-premises network, or a public endpoint).</li>
+<li><strong>Steps</strong>:
+<ol>
+<li>Go to <strong>Connection Monitor</strong> under Network Watcher.</li>
+<li>Click <strong>+ Add</strong> to create a new monitor.</li>
+<li>Provide the source (VM) and destination (IP address, FQDN, etc.).</li>
+<li>Configure monitoring parameters like frequency and protocol.</li>
+<li>Click <strong>Create</strong> to start monitoring.</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-ip-flow-verify">2. <strong>IP Flow Verify</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Check if a specific packet is allowed or denied based on the Network Security Group (NSG) rules.</li>
+<li><strong>Steps</strong>:
+<ol>
+<li>Go to <strong>IP Flow Verify</strong>.</li>
+<li>Select the <strong>Subscription</strong> and <strong>VM</strong>.</li>
+<li>Enter the <strong>Direction</strong> (inbound or outbound), <strong>Local IP</strong>, <strong>Remote IP</strong>, <strong>Port</strong>, and <strong>Protocol</strong>.</li>
+<li>Click <strong>Check</strong> to determine if the traffic is allowed or denied.</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-topology">3. <strong>Topology</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Generate a visual map of your VNet, including subnets, virtual machines, NICs, and NSGs.</li>
+<li><strong>Steps</strong>:
+<ol>
+<li>Go to <strong>Topology</strong>.</li>
+<li>Select the <strong>Subscription</strong> and <strong>Resource Group</strong>.</li>
+<li>A visual representation of your network resources will be generated.</li>
+<li>You can export the topology as a JSON file.</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-next-hop">4. <strong>Next Hop</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Analyze the route that outbound traffic from a virtual machine will take, based on the routing table.</li>
+<li><strong>Steps</strong>:
+<ol>
+<li>Go to <strong>Next Hop</strong>.</li>
+<li>Select the <strong>Subscription</strong>, <strong>Virtual Machine</strong>, <strong>Network Interface</strong>, and <strong>Source IP</strong>.</li>
+<li>Click <strong>Next Hop</strong> to see the routing information.</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-packet-capture">5. <strong>Packet Capture</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Capture inbound and outbound traffic from a virtual machine’s network interface.</li>
+<li><strong>Steps</strong>:
+<ol>
+<li>Go to <strong>Packet Capture</strong>.</li>
+<li>Select the <strong>Virtual Machine</strong> you want to capture traffic from.</li>
+<li>Configure the capture settings such as <strong>filter</strong>, <strong>storage location</strong> (Storage Account or local VM disk), and <strong>time duration</strong>.</li>
+<li>Start the capture and analyze the results.</li>
+</ol>
+</li>
+</ul>
+<h3 id="6-connection-troubleshoot">6. <strong>Connection Troubleshoot</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Troubleshoot the connection between a source and a destination to identify potential issues.</li>
+<li><strong>Steps</strong>:
+<ol>
+<li>Go to <strong>Connection Troubleshoot</strong>.</li>
+<li>Select the <strong>Subscription</strong>, <strong>Source</strong> (VM), and <strong>Destination</strong> (IP address or FQDN).</li>
+<li>Specify the <strong>Protocol</strong> (TCP/UDP) and <strong>Port</strong>.</li>
+<li>Click <strong>Check</strong> to troubleshoot the connection.</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="example-verify-ip-flow">Example: Verify IP Flow</h2>
+<h3 id="scenario">Scenario</h3>
+<p>You have a virtual machine that cannot reach a specific endpoint. You want to verify if the NSG rules are blocking the traffic.</p>
+<h3 id="steps">Steps</h3>
+<ol>
+<li>Navigate to <strong>Network Watcher</strong> in the Azure Portal.</li>
+<li>Under <strong>IP Flow Verify</strong>, select the virtual machine having issues.</li>
+<li>Input the following details:
+<ul>
+<li><strong>Direction</strong>: Inbound (or Outbound)</li>
+<li><strong>Local IP</strong>: The IP of the virtual machine.</li>
+<li><strong>Remote IP</strong>: The IP of the endpoint.</li>
+<li><strong>Local Port</strong>: The port you are trying to access on the VM.</li>
+<li><strong>Remote Port</strong>: The port being accessed from the remote endpoint.</li>
+<li><strong>Protocol</strong>: TCP or UDP.</li>
+</ul>
+</li>
+<li>Click <strong>Check</strong> to see if the traffic is allowed or denied based on the current NSG rules.</li>
+</ol>
+<hr>
+<h2 id="pricing">Pricing</h2>
+<p>Network Watcher comes with a set of free limits and paid tiers. Most features, like topology and NSG diagnostics, are free. However, features like <strong>Packet Capture</strong> and <strong>Connection Monitor</strong> may have associated costs.</p>
+<h3 id="reference-pricing">Reference Pricing:</h3>
+<ul>
+<li><strong>Packet Capture</strong>: Based on the amount of data captured and stored.</li>
+<li><strong>Connection Monitor</strong>: Based on the number of checks and monitoring frequency.</li>
+</ul>
+<p>For more information, check the official <a href="https://azure.microsoft.com/en-us/pricing/calculator/" rel="external" target="_blank">Azure Pricing Calculator</a>.</p>
+<hr>
+<h2 id="reference-links-1">Reference Links</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview" rel="external" target="_blank">Azure Network Watcher Documentation</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-troubleshoot-manage" rel="external" target="_blank">Troubleshoot with Network Watcher</a></li>
+<li><a href="https://azure.microsoft.com/en-us/pricing/details/network-watcher/" rel="external" target="_blank">Pricing for Network Watcher</a></li>
+</ul>
+<h1 id="azure-networking-tasks--common-interview-topics">Azure Networking Tasks &amp; Common Interview Topics</h1>
+<h2 id="1-virtual-networks-vnet">1. Virtual Networks (VNet)</h2>
+<ul>
+<li><strong>Creating and Configuring VNets</strong>: Understanding how to create, manage, and assign VNets. Knowing how to break up address spaces into subnets and how to allocate CIDR blocks.</li>
+<li><strong>Subnets</strong>: Creating multiple subnets, routing traffic between subnets, and configuring subnet delegation to specific Azure services (e.g., Virtual Machines, App Services).</li>
+<li><strong>Service Endpoints and Private Endpoints</strong>: Configuring service endpoints for services like Azure SQL, and creating private endpoints to secure Azure resources.</li>
+</ul>
+<h3 id="common-interview-questions">Common Interview Questions:</h3>
+<ol>
+<li><strong>What is a VNet in Azure, and how does it differ from a traditional network?</strong></li>
+<li><strong>How do you configure subnets within a VNet, and what considerations do you need to make for CIDR block assignment?</strong></li>
+<li><strong>What are service endpoints and private endpoints in Azure? When would you use each?</strong></li>
+<li><strong>How would you peer two VNets, and what are the security implications?</strong></li>
+</ol>
+<h2 id="2-network-security-groups-nsgs">2. Network Security Groups (NSGs)</h2>
+<ul>
+<li><strong>Configuring NSG Rules</strong>: Creating and managing inbound and outbound security rules. Understanding how to configure port, IP, and protocol-based access control.</li>
+<li><strong>Application Security Groups (ASGs)</strong>: Grouping VMs into logical ASGs to simplify security rule management.</li>
+</ul>
+<h3 id="common-interview-questions-1">Common Interview Questions:</h3>
+<ol>
+<li><strong>What are Network Security Groups, and how do they control traffic?</strong></li>
+<li><strong>How do you set up an NSG rule to block all traffic except SSH (port 22) for a specific VM?</strong></li>
+<li><strong>Explain the difference between an NSG and an ASG. How are they used together?</strong></li>
+<li><strong>How would you troubleshoot if a VM is unable to connect due to NSG rules?</strong></li>
+</ol>
+<h2 id="3-public-and-private-ip-addressing">3. Public and Private IP Addressing</h2>
+<ul>
+<li><strong>Configuring Public and Private IPs</strong>: Assigning static or dynamic public IPs and private IPs to resources like Virtual Machines or Load Balancers.</li>
+<li><strong>Elastic IPs and IP Allocation</strong>: Understanding IP address allocation for scaling resources and avoiding IP exhaustion.</li>
+</ul>
+<h3 id="common-interview-questions-2">Common Interview Questions:</h3>
+<ol>
+<li><strong>What’s the difference between a public and private IP in Azure, and how are they used?</strong></li>
+<li><strong>How would you assign a static IP to a VM, and when would this be necessary?</strong></li>
+<li><strong>How do you ensure high availability when using public IP addresses with Azure services?</strong></li>
+</ol>
+<h2 id="4-azure-load-balancer">4. Azure Load Balancer</h2>
+<ul>
+<li><strong>Setting up Load Balancers</strong>: Configuring an Azure Load Balancer for distributing traffic across multiple VMs.</li>
+<li><strong>Health Probes</strong>: Configuring health probes for monitoring VM availability.</li>
+<li><strong>Internal vs. External Load Balancers</strong>: Understanding when to use an internal load balancer (for private resources) vs. external.</li>
+</ul>
+<h3 id="common-interview-questions-3">Common Interview Questions:</h3>
+<ol>
+<li><strong>Explain how Azure Load Balancers work, and what types are available?</strong></li>
+<li><strong>How would you configure a health probe for an Azure Load Balancer?</strong></li>
+<li><strong>What is the difference between an internal and external load balancer, and in which scenarios would you use each?</strong></li>
+</ol>
+<h2 id="5-azure-application-gateway-layer-7-load-balancing">5. Azure Application Gateway (Layer 7 Load Balancing)</h2>
+<ul>
+<li><strong>Application Gateway Setup</strong>: Configuring Azure Application Gateway for Layer 7 load balancing with SSL termination and URL-based routing.</li>
+<li><strong>WAF (Web Application Firewall)</strong>: Configuring WAF to protect applications against common web exploits.</li>
+</ul>
+<h3 id="common-interview-questions-4">Common Interview Questions:</h3>
+<ol>
+<li><strong>What’s the difference between an Azure Load Balancer and Azure Application Gateway?</strong></li>
+<li><strong>How does SSL termination work on Application Gateway, and why is it important?</strong></li>
+<li><strong>When would you use WAF in conjunction with Application Gateway?</strong></li>
+</ol>
+<h2 id="6-virtual-network-peering">6. Virtual Network Peering</h2>
+<ul>
+<li><strong>VNet Peering</strong>: Setting up VNet peering to connect two virtual networks, allowing resources in both networks to communicate.</li>
+<li><strong>Global VNet Peering</strong>: Connecting VNets across different regions.</li>
+</ul>
+<h3 id="common-interview-questions-5">Common Interview Questions:</h3>
+<ol>
+<li><strong>What is VNet peering, and how does it work in Azure?</strong></li>
+<li><strong>How would you set up peering between two VNets in different regions (global VNet peering)?</strong></li>
+<li><strong>How is routing between peered VNets managed, and what are the cost implications?</strong></li>
+</ol>
+<h2 id="7-azure-vpn-gateway">7. Azure VPN Gateway</h2>
+<ul>
+<li><strong>Configuring Site-to-Site VPN</strong>: Setting up a VPN Gateway for a secure connection between on-premises networks and Azure VNets.</li>
+<li><strong>Point-to-Site VPN</strong>: Setting up a point-to-site VPN for secure remote access from individual devices to Azure VNets.</li>
+<li><strong>ExpressRoute</strong>: Understanding the differences between VPN Gateway and ExpressRoute for hybrid network connectivity.</li>
+</ul>
+<h3 id="common-interview-questions-6">Common Interview Questions:</h3>
+<ol>
+<li><strong>What is the difference between Site-to-Site VPN and Point-to-Site VPN in Azure?</strong></li>
+<li><strong>How does Azure VPN Gateway differ from ExpressRoute, and when would you choose one over the other?</strong></li>
+<li><strong>What are the steps to configure a Site-to-Site VPN connection between an on-premises network and Azure?</strong></li>
+</ol>
+<h2 id="8-azure-dns-and-custom-dns">8. Azure DNS and Custom DNS</h2>
+<ul>
+<li><strong>Configuring DNS</strong>: Understanding how to set up DNS zones and records for your resources in Azure.</li>
+<li><strong>Custom DNS</strong>: How to configure custom DNS servers for VNets and enforce DNS name resolution for resources in your network.</li>
+</ul>
+<h3 id="common-interview-questions-7">Common Interview Questions:</h3>
+<ol>
+<li><strong>What is Azure DNS, and how is it used to manage domain names in the cloud?</strong></li>
+<li><strong>How would you configure custom DNS servers for your Azure resources?</strong></li>
+<li><strong>What is the difference between Azure DNS and an external DNS provider?</strong></li>
+</ol>
+<h2 id="9-traffic-manager">9. Traffic Manager</h2>
+<ul>
+<li><strong>Traffic Manager Profiles</strong>: Configuring Azure Traffic Manager for global DNS-based traffic routing across multiple regions.</li>
+<li><strong>Routing Methods</strong>: Understanding different routing methods (e.g., priority, performance, geographic) for distributing traffic.</li>
+</ul>
+<h3 id="common-interview-questions-8">Common Interview Questions:</h3>
+<ol>
+<li><strong>What is Azure Traffic Manager, and how does it work?</strong></li>
+<li><strong>What are the different traffic routing methods available in Traffic Manager, and when would you use them?</strong></li>
+<li><strong>How do you ensure high availability across multiple regions using Azure Traffic Manager?</strong></li>
+</ol>
+<hr>
+<h1 id="common-networking-interview-questions">Common Networking Interview Questions</h1>
+<ol>
+<li><strong>What is the difference between a VNet and a subnet in Azure?</strong></li>
+<li><strong>Explain how NSGs work and how they control traffic within a VNet.</strong></li>
+<li><strong>How do you assign a public IP to a VM, and when would you use a static vs. dynamic IP?</strong></li>
+<li><strong>What is VNet peering, and how is it different from using a VPN Gateway?</strong></li>
+<li><strong>Describe the process of setting up a load balancer for a group of VMs in Azure.</strong></li>
+<li><strong>How would you configure DNS for an Azure VNet? Can you use custom DNS servers?</strong></li>
+<li><strong>What are service endpoints, and how do they help secure access to Azure resources?</strong></li>
+<li><strong>How do you monitor network traffic and performance in Azure?</strong></li>
+<li><strong>How does Azure handle hybrid network connectivity, and what are the differences between VPN Gateway and ExpressRoute?</strong></li>
+<li><strong>What is the role of Azure Traffic Manager, and how does it differ from Azure Load Balancer?</strong></li>
+</ol>
+<hr>
+<p>This list covers the most commonly used tasks and scenarios in <strong>Azure Networking</strong> and some of the key questions asked in interviews. Understanding these concepts will help you demonstrate your knowledge and problem-solving abilities during interviews.</p>
+<h2 id="azure-service-endpoint-vs-private-endpoint">Azure Service Endpoint vs. Private Endpoint</h2>
+<p>Azure offers <strong>Service Endpoints</strong> and <strong>Private Endpoints</strong> to secure traffic between virtual networks (VNets) and Azure services. Below is an overview of their key differences, use cases, and benefits.</p>
+<h3 id="azure-service-endpoint">Azure Service Endpoint</h3>
+<p>An Azure <strong>Service Endpoint</strong> extends a VNet to Azure services by enabling secure access through the Azure backbone network, bypassing the public internet.</p>
+<h3 id="key-features-2">Key Features</h3>
+<ul>
+<li>Secures traffic between VNet and Azure services (e.g., Azure Storage, Azure SQL Database) over the Azure backbone.</li>
+<li>Simplifies network architecture by removing the need for public IP whitelisting.</li>
+<li>Supports identity-based access control via Azure AD and service firewalls.</li>
+<li>No additional cost beyond standard Azure VNet charges.</li>
+</ul>
+<h3 id="use-cases">Use Cases</h3>
+<ul>
+<li>Securing traffic to Azure PaaS services like Azure Storage or SQL Database from VMs or on-premises.</li>
+<li>Use in environments where simplicity and cost efficiency are key.</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Traffic still originates from the public IP address of the VNet/Subnet.</li>
+<li>Limited to supported Azure services.</li>
+</ul>
+<hr>
+<h2 id="azure-private-endpoint">Azure Private Endpoint</h2>
+<p>An Azure <strong>Private Endpoint</strong> creates a private IP within your VNet that is directly connected to a specific instance of an Azure service.</p>
+<h3 id="key-features-3">Key Features</h3>
+<ul>
+<li>Provides a fully private connection to Azure services, eliminating public IP exposure.</li>
+<li>Works with a variety of services, including Azure Storage, SQL Database, and more.</li>
+<li>Supports DNS configuration to resolve the private IP for the service.</li>
+<li>Charged based on Private Endpoint usage.</li>
+</ul>
+<h3 id="use-cases-1">Use Cases</h3>
+<ul>
+<li>Scenarios requiring strict isolation and compliance by keeping all traffic private.</li>
+<li>Connecting from on-premises environments via VPN or ExpressRoute.</li>
+<li>Securing Azure services used by multi-tenant applications.</li>
+</ul>
+<h3 id="limitations-1">Limitations</h3>
+<ul>
+<li>Requires additional setup for DNS resolution.</li>
+<li>Costlier compared to Service Endpoints.</li>
+</ul>
+<hr>
+<h3 id="comparison-table">Comparison Table</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Feature</strong></th>
+          <th><strong>Service Endpoint</strong></th>
+          <th><strong>Private Endpoint</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Traffic Path</strong></td>
+          <td>Uses Azure backbone but originates from public IP.</td>
+          <td>Fully private connection within the VNet.</td>
+      </tr>
+      <tr>
+          <td><strong>Public Exposure</strong></td>
+          <td>Service IP is public but accessed securely.</td>
+          <td>Service is completely isolated within the VNet.</td>
+      </tr>
+      <tr>
+          <td><strong>Use Cases</strong></td>
+          <td>Simple scenarios for securing Azure services.</td>
+          <td>Strict compliance or private communication.</td>
+      </tr>
+      <tr>
+          <td><strong>Supported Services</strong></td>
+          <td>Limited to certain Azure PaaS services.</td>
+          <td>Supported by many Azure services.</td>
+      </tr>
+      <tr>
+          <td><strong>Cost</strong></td>
+          <td>No additional cost.</td>
+          <td>Charged for Private Endpoint usage.</td>
+      </tr>
+      <tr>
+          <td><strong>DNS Configuration</strong></td>
+          <td>Not required.</td>
+          <td>Required for resolving private IPs.</td>
+      </tr>
+      <tr>
+          <td><strong>On-Premises Access</strong></td>
+          <td>Supported via VPN/ExpressRoute with public IP.</td>
+          <td>Supported via VPN/ExpressRoute over private IP.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="choosing-between-service-endpoint-and-private-endpoint">Choosing Between Service Endpoint and Private Endpoint</h3>
+<ul>
+<li>
+<p>Use <strong>Service Endpoint</strong> if:</p>
+<ul>
+<li>You need a cost-effective and simple solution to secure traffic.</li>
+<li>Public IP exposure is acceptable.</li>
+</ul>
+</li>
+<li>
+<p>Use <strong>Private Endpoint</strong> if:</p>
+<ul>
+<li>You require full isolation and compliance with strict security policies.</li>
+<li>You need private connections to specific Azure service instances.</li>
+</ul>
+</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../index.html">
+Azure Cloud Documentation
+          </a>
+        </div>
+        <script>
+          window.index_js_url="../searchindex.en.js?1734696797";
+        </script>
+        <search><form action="../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="../js/auto-complete.js?1734696797" defer></script>
+        <script src="../js/lunr/lunr.min.js?1734696797" defer></script>
+        <script src="../js/lunr/lunr.stemmer.support.min.js?1734696797" defer></script>
+        <script src="../js/lunr/lunr.multi.min.js?1734696797" defer></script>
+        <script src="../js/lunr/lunr.en.min.js?1734696797" defer></script>
+        <script src="../js/search.js?1734696797" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/azure/index.html"><a class="padding" href="../azure/index.html">Azure documentation</a></li>
+            <li class="" data-nav-id="/part01/index.html"><a class="padding" href="../part01/index.html">Part 01</a></li>
+            <li class="" data-nav-id="/part02/index.html"><a class="padding" href="../part02/index.html">Part 02</a></li>
+            <li class="" data-nav-id="/part03/index.html"><a class="padding" href="../part03/index.html">Part 03</a></li>
+            <li class="" data-nav-id="/part04/index.html"><a class="padding" href="../part04/index.html">Part 04</a></li>
+            <li class="" data-nav-id="/part05/index.html"><a class="padding" href="../part05/index.html">Part 05</a></li>
+            <li class="" data-nav-id="/part06/index.html"><a class="padding" href="../part06/index.html">Part 06</a></li>
+            <li class="" data-nav-id="/part07/index.html"><a class="padding" href="../part07/index.html">Part 07</a></li>
+            <li class="" data-nav-id="/part08/index.html"><a class="padding" href="../part08/index.html">Part 08</a></li>
+            <li class="" data-nav-id="/part09/index.html"><a class="padding" href="../part09/index.html">Part 09</a></li>
+            <li class="" data-nav-id="/part10/index.html"><a class="padding" href="../part10/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11-copy-2/index.html"><a class="padding" href="../part11-copy-2/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11-copy-3/index.html"><a class="padding" href="../part11-copy-3/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11-copy-4/index.html"><a class="padding" href="../part11-copy-4/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11-copy-5/index.html"><a class="padding" href="../part11-copy-5/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11-copy-6/index.html"><a class="padding" href="../part11-copy-6/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11-copy-7/index.html"><a class="padding" href="../part11-copy-7/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11/index.html"><a class="padding" href="../part11/index.html">Part 11</a></li>
+            <li class="" data-nav-id="/part12/index.html"><a class="padding" href="../part12/index.html">Part 12</a></li>
+            <li class="active " data-nav-id="/part11-copy-8/index.html"><a class="padding" href="../part11-copy-8/index.html">Part 13</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="../part11-copy-8/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="../js/clipboard.min.js?1734696797" defer></script>
+    <script src="../js/perfect-scrollbar.min.js?1734696797" defer></script>
+    <script src="../js/theme.js?1734696797" defer></script>
+  </body>
+</html>
