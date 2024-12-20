@@ -3,7 +3,7 @@
   <channel>
     <title>Azure Cloud Documentation</title>
     <link>https://khushiramsingh680.github.io/Azure/index.html</link>
-    <description>Azure Cloud Documentatation</description>
+    <description>Welcome to the Azure Cloud Documentation! This comprehensive guide is designed to help you explore and master Azure cloud services through structured learning modules. Navigate through each section to dive deeper into Azure’s capabilities, including Virtual Machines, Networking, Storage, Kubernetes, and more.&#xA;Table of Contents Getting Started VirtualBox, Vagrant, and Basics of Linux Azure Virtual Machine Azure CLI Compute and Scalability Azure Images, VM Restore, and Virtual Scale Set Azure Kubernetes Service Networking Azure Virtual Network Azure Load Balancer Monitoring and Security Azure Monitoring Azure Policy Azure Entra ID Data and Storage Azure Storage Azure Data Protection App Services and Infrastructure as Code Azure App Services Azure ARM Template Azure Terraform &amp; Bicep</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://khushiramsingh680.github.io/Azure/index.xml" rel="self" type="application/rss+xml" />
@@ -12,7 +12,7 @@
       <link>https://khushiramsingh680.github.io/Azure/azure/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://khushiramsingh680.github.io/Azure/azure/index.html</guid>
-      <description>Learn by doing</description>
+      <description>Learn by doing&#xA;Topics Details Part Topic Part 01 VirtualBox, Vagrant, and Basics of Linux Part 02 Azure Virtual Machine Part 03 Azure CLI Part 04 Azure Image, Azure VM Restore, Virtual Scale Set Part 05 Azure Virtual Network Part 06 Azure Load Balancer Part 07 Azure Monitoring Part 08 Azure Policy Part 09 Azure Storage Part 10 Azure Data Protection Part 11 Azure Entra ID Part 12 Azure App Services Part 13 Azure Kubernetes Services Part 14 Azure ARM Template Part 15 Azure Terraform &amp; Bicep</description>
     </item>
     <item>
       <title>Part 01</title>
@@ -40,7 +40,7 @@
       <link>https://khushiramsingh680.github.io/Azure/part04/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://khushiramsingh680.github.io/Azure/part04/index.html</guid>
-      <description>Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.&#xA;Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:</description>
+      <description>Creating an Image of a Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.&#xA;Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:</description>
     </item>
     <item>
       <title>Part 05</title>

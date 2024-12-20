@@ -3,7 +3,7 @@ title = "Part 04"
 
 +++
 
-- [Creating an Image of an Azure VM](#creating-an-image-of-an-azure-vm)
+- [Creating an Image of a Azure VM](#creating-an-image-of-an-azure-vm)
 - [Azure Virtual Machine Scale Set](#azure-virtual-machine-scale-sets-vmss)
 - [Azure Virtual Machine Restore Point](#azure-virtual-machine-restore-point)
 
@@ -169,6 +169,10 @@ Azure VM Restore Points allow you to create consistent snapshots of your virtual
 5. Select **Crash-Consistent** or **Application-Consistent** based on your needs.
 6. Confirm and create the restore point.
 
+## Application-consistent
+Uses the Volume Shadow Copy Service (VSS) to ensure that application data is consistent before creating a restore point. This model is supported for VMs running Windows operating systems. 
+## Crash-consistent
+Stores snapshots of all managed disks attached to a VM. This model is available in preview and can be used for agentless VM backups.
 ### 2. Using Azure CLI
 ```bash
 # Create a restore point collection
@@ -190,3 +194,7 @@ az restore-point create --resource-group <ResourceGroupName> \
 - Navigate to **Restore Points**.
 - Select the restore point and disk you want to restore.
 - Use the restored disk to replace the original disk or attach it to a new VM.
+
+## Points:
+- VM restore points are incremental. The first restore point stores a full copy of all disks attached to the VM. For each successive restore point for a VM, only the incremental changes to your disks are backed up.
+-  To reduce your costs, you can optionally exclude any disk when you create a restore point for your VM.

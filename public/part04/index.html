@@ -5,31 +5,31 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.4">
     <meta name="generator" content="Relearn 7.2.1+f1701957c30daae7cd133bec5a7968480563ce9f">
-    <meta name="description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+    <meta name="description" content="Creating an Image of a Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
 Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Part 04 :: Azure Cloud Documentation">
-    <meta name="twitter:description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+    <meta name="twitter:description" content="Creating an Image of a Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
 Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
     <meta property="og:url" content="https://khushiramsingh680.github.io/Azure/part04/index.html">
     <meta property="og:site_name" content="Azure Cloud Documentation">
     <meta property="og:title" content="Part 04 :: Azure Cloud Documentation">
-    <meta property="og:description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+    <meta property="og:description" content="Creating an Image of a Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
 Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Azure Cloud Documentation">
     <meta itemprop="name" content="Part 04 :: Azure Cloud Documentation">
-    <meta itemprop="description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+    <meta itemprop="description" content="Creating an Image of a Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
 Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
-    <meta itemprop="wordCount" content="1212">
+    <meta itemprop="wordCount" content="1325">
     <title>Part 04 :: Azure Cloud Documentation</title>
-    <link href="../css/fontawesome-all.min.css?1734706067" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1734706067" rel="stylesheet"></noscript>
-    <link href="../css/auto-complete.css?1734706067" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1734706067" rel="stylesheet"></noscript>
-    <link href="../css/perfect-scrollbar.min.css?1734706067" rel="stylesheet">
-    <link href="../css/theme.min.css?1734706067" rel="stylesheet">
-    <link href="../css/format-html.min.css?1734706067" rel="stylesheet" id="R-format-style">
+    <link href="../css/fontawesome-all.min.css?1734709081" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1734709081" rel="stylesheet"></noscript>
+    <link href="../css/auto-complete.css?1734709081" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1734709081" rel="stylesheet"></noscript>
+    <link href="../css/perfect-scrollbar.min.css?1734709081" rel="stylesheet">
+    <link href="../css/theme.min.css?1734709081" rel="stylesheet">
+    <link href="../css/format-html.min.css?1734709081" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..';
@@ -119,12 +119,18 @@ Why Use Capture? Capturing a VM provides a reusable base configuration, which in
     <li><a href="#steps-to-create-a-restore-point">Steps to Create a Restore Point</a>
       <ul>
         <li><a href="#1-using-the-azure-portal">1. Using the Azure Portal</a></li>
+      </ul>
+    </li>
+    <li><a href="#application-consistent">Application-consistent</a></li>
+    <li><a href="#crash-consistent">Crash-consistent</a>
+      <ul>
         <li><a href="#2-using-azure-cli">2. Using Azure CLI</a></li>
       </ul>
     </li>
     <li><a href="#steps-to-restore-a-virtual-machine">Steps to Restore a Virtual Machine</a></li>
     <li><a href="#1-restore-entire-vm">1. Restore Entire VM</a></li>
     <li><a href="#2-restore-individual-disks">2. Restore Individual Disks</a></li>
+    <li><a href="#points">Points:</a></li>
   </ul>
 </nav>
                 </div>
@@ -160,7 +166,7 @@ Why Use Capture? Capturing a VM provides a reusable base configuration, which in
 <h1 id="part-04">Part 04</h1>
 
 <ul>
-<li><a href="../part04/index.html#creating-an-image-of-an-azure-vm">Creating an Image of an Azure VM</a></li>
+<li><a href="../part04/index.html#creating-an-image-of-an-azure-vm">Creating an Image of a Azure VM</a></li>
 <li><a href="../part04/index.html#azure-virtual-machine-scale-sets-vmss">Azure Virtual Machine Scale Set</a></li>
 <li><a href="../part04/index.html#azure-virtual-machine-restore-point">Azure Virtual Machine Restore Point</a></li>
 </ul>
@@ -394,6 +400,10 @@ Why Use Capture? Capturing a VM provides a reusable base configuration, which in
 <li>Select <strong>Crash-Consistent</strong> or <strong>Application-Consistent</strong> based on your needs.</li>
 <li>Confirm and create the restore point.</li>
 </ol>
+<h2 id="application-consistent">Application-consistent</h2>
+<p>Uses the Volume Shadow Copy Service (VSS) to ensure that application data is consistent before creating a restore point. This model is supported for VMs running Windows operating systems.</p>
+<h2 id="crash-consistent">Crash-consistent</h2>
+<p>Stores snapshots of all managed disks attached to a VM. This model is available in preview and can be used for agentless VM backups.</p>
 <h3 id="2-using-azure-cli">2. Using Azure CLI</h3>
 <div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Create a restore point collection</span>
 </span></span><span style="display:flex;"><span>az restore-point create --resource-group &lt;ResourceGroupName&gt; <span style="color:#ae81ff">\
@@ -414,6 +424,11 @@ Why Use Capture? Capturing a VM provides a reusable base configuration, which in
 <li>Select the restore point and disk you want to restore.</li>
 <li>Use the restored disk to replace the original disk or attach it to a new VM.</li>
 </ul>
+<h2 id="points">Points:</h2>
+<ul>
+<li>VM restore points are incremental. The first restore point stores a full copy of all disks attached to the VM. For each successive restore point for a VM, only the incremental changes to your disks are backed up.</li>
+<li>To reduce your costs, you can optionally exclude any disk when you create a restore point for your VM.</li>
+</ul>
 
   <footer class="footline">
   </footer>
@@ -430,7 +445,7 @@ Azure Cloud Documentation
           </a>
         </div>
         <script>
-          window.index_js_url="../searchindex.en.js?1734706067";
+          window.index_js_url="../searchindex.en.js?1734709081";
         </script>
         <search><form action="../search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -443,12 +458,12 @@ Azure Cloud Documentation
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="../js/auto-complete.js?1734706067" defer></script>
-        <script src="../js/lunr/lunr.min.js?1734706067" defer></script>
-        <script src="../js/lunr/lunr.stemmer.support.min.js?1734706067" defer></script>
-        <script src="../js/lunr/lunr.multi.min.js?1734706067" defer></script>
-        <script src="../js/lunr/lunr.en.min.js?1734706067" defer></script>
-        <script src="../js/search.js?1734706067" defer></script>
+        <script src="../js/auto-complete.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.stemmer.support.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.multi.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.en.min.js?1734709081" defer></script>
+        <script src="../js/search.js?1734709081" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -533,8 +548,8 @@ Azure Cloud Documentation
         </div>
       </div>
     </aside>
-    <script src="../js/clipboard.min.js?1734706067" defer></script>
-    <script src="../js/perfect-scrollbar.min.js?1734706067" defer></script>
-    <script src="../js/theme.js?1734706067" defer></script>
+    <script src="../js/clipboard.min.js?1734709081" defer></script>
+    <script src="../js/perfect-scrollbar.min.js?1734709081" defer></script>
+    <script src="../js/theme.js?1734709081" defer></script>
   </body>
 </html>
