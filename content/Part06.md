@@ -136,7 +136,7 @@ Azure Load Balancer provides high availability and load balancing for your appli
 - [Azure Load Balancer Documentation](https://learn.microsoft.com/en-us/azure/load-balancer/)
 
 ---
-
+### [LAB 01](https://learn.microsoft.com/en-us/azure/load-balancer/quickstart-load-balancer-standard-public-portal)
 ### Configuring Azure Load Balancer
 
 1. **Create Load Balancer**:
