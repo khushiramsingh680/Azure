@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://khushiramsingh680.github.io/Aks/azure/index.html</loc>
-  </url>
-  <url>
-    <loc>https://khushiramsingh680.github.io/Aks/categories/index.html</loc>
-  </url>
-  <url>
-    <loc>https://khushiramsingh680.github.io/Aks/azure/azure/index.html</loc>
-  </url>
-  <url>
-    <loc>https://khushiramsingh680.github.io/Aks/tags/index.html</loc>
+    <loc>https://khushiramsingh680.github.io/Azure/azure/</loc>
+  </url><url>
+    <loc>https://khushiramsingh680.github.io/Azure/</loc>
+  </url><url>
+    <loc>https://khushiramsingh680.github.io/Azure/azure/azure/</loc>
+  </url><url>
+    <loc>https://khushiramsingh680.github.io/Azure/categories/</loc>
+  </url><url>
+    <loc>https://khushiramsingh680.github.io/Azure/tags/</loc>
   </url>
 </urlset>
