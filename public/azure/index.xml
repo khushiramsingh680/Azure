@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-<<<<<<< HEAD
     <title>Azure documentation on Azure Cloud Documentation</title>
     <link>https://khushiramsingh680.github.io/Azure/azure/</link>
     <description>Recent content in Azure documentation on Azure Cloud Documentation</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://khushiramsingh680.github.io/Azure/azure/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Azure Cloud Administration</title>
-      <link>https://khushiramsingh680.github.io/Azure/azure/azure/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://khushiramsingh680.github.io/Azure/azure/azure/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
-=======
-    <title>Azure documentation :: Azure Cloud Documentation</title>
-    <link>https://khushiramsingh680.github.io/Azure/azure/index.html</link>
-    <description>Learn by doing&#xA;Topics Details Part Topic Part 01 VirtualBox, Vagrant, and Basics of Linux Part 02 Azure Virtual Machine Part 03 Azure CLI Part 04 Azure Image, Azure VM Restore, Virtual Scale Set Part 05 Azure Virtual Network Part 06 Azure Load Balancer Part 07 Azure Monitoring Part 08 Azure Policy Part 09 Azure Storage Part 10 Azure Data Protection Part 11 Azure Entra ID Part 12 Azure App Services Part 13 Azure Kubernetes Services Part 14 Azure ARM Template Part 15 Azure Terraform &amp; Bicep</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <atom:link href="https://khushiramsingh680.github.io/Azure/azure/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
->>>>>>> b1db7446676542bd4c8c403dc86bcf662b62749d
