@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/Azure/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Azure/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Part 04 :: Azure Cloud Documentation">
+    <meta name="twitter:description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
+    <meta property="og:url" content="http://localhost:1313/Azure/part04-copy/index.html">
+    <meta property="og:site_name" content="Azure Cloud Documentation">
+    <meta property="og:title" content="Part 04 :: Azure Cloud Documentation">
+    <meta property="og:description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Azure Cloud Documentation">
+    <meta itemprop="name" content="Part 04 :: Azure Cloud Documentation">
+    <meta itemprop="description" content="Creating an Image of an Azure VM Azure Virtual Machine Scale Set Azure Virtual Machine Restore Point What is “Capture”? In Azure, capture is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.
+Why Use Capture? Capturing a VM provides a reusable base configuration, which includes:">
+    <meta itemprop="wordCount" content="1212">
+    <title>Part 04 :: Azure Cloud Documentation</title>
+    <link href="../css/fontawesome-all.min.css?1734695904" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1734695904" rel="stylesheet"></noscript>
+    <link href="../css/auto-complete.css?1734695904" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1734695904" rel="stylesheet"></noscript>
+    <link href="../css/perfect-scrollbar.min.css?1734695904" rel="stylesheet">
+    <link href="../css/theme.css?1734695904" rel="stylesheet">
+    <link href="../css/format-html.css?1734695904" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313\/Azure';
+      window.relearn.min = ``;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="../part04-copy/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#what-is-capture">What is &ldquo;Capture&rdquo;?</a>
+      <ul>
+        <li><a href="#why-use-capture">Why Use Capture?</a></li>
+        <li><a href="#types-of-capture">Types of Capture</a></li>
+      </ul>
+    </li>
+    <li><a href="#creating-an-image-of-an-azure-vm">Creating an Image of an Azure VM</a>
+      <ul>
+        <li><a href="#steps-to-capture-an-image-of-a-vm-full-vm-snapshot">Steps to Capture an Image of a VM (Full VM Snapshot)</a></li>
+      </ul>
+    </li>
+    <li><a href="#azure-virtual-machine-scale-sets-vmss">Azure Virtual Machine Scale Sets (VMSS)</a>
+      <ul>
+        <li><a href="#key-features-of-vmss">Key Features of VMSS</a></li>
+        <li><a href="#common-use-cases-for-vmss">Common Use Cases for VMSS</a></li>
+        <li><a href="#creating-an-image-for-azure-virtual-machine-scale-sets-vmss">Creating an Image for Azure Virtual Machine Scale Sets (VMSS)</a></li>
+        <li><a href="#steps-to-capture-an-image-for-vmss">Steps to Capture an Image for VMSS</a></li>
+      </ul>
+    </li>
+    <li><a href="#azure-virtual-machine-restore-point">Azure Virtual Machine Restore Point</a></li>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#key-components">Key Components</a></li>
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#steps-to-create-a-restore-point">Steps to Create a Restore Point</a>
+      <ul>
+        <li><a href="#1-using-the-azure-portal">1. Using the Azure Portal</a></li>
+        <li><a href="#2-using-azure-cli">2. Using Azure CLI</a></li>
+      </ul>
+    </li>
+    <li><a href="#steps-to-restore-a-virtual-machine">Steps to Restore a Virtual Machine</a></li>
+    <li><a href="#1-restore-entire-vm">1. Restore Entire VM</a></li>
+    <li><a href="#2-restore-individual-disks">2. Restore Individual Disks</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Part 04</span><meta itemprop="position" content="1"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part03/index.html" title="Part 03 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part04/index.html" title="Part 04 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="part-04">Part 04</h1>
+
+<ul>
+<li><a href="../part04-copy/index.html#creating-an-image-of-an-azure-vm">Creating an Image of an Azure VM</a></li>
+<li><a href="../part04-copy/index.html#azure-virtual-machine-scale-sets-vmss">Azure Virtual Machine Scale Set</a></li>
+<li><a href="../part04-copy/index.html#azure-virtual-machine-restore-point">Azure Virtual Machine Restore Point</a></li>
+</ul>
+<h2 id="what-is-capture">What is &ldquo;Capture&rdquo;?</h2>
+<p>In Azure, <strong>capture</strong> is the process of creating an image from an existing Virtual Machine (VM). This image can be used to deploy new VMs or Virtual Machine Scale Sets (VMSS) with the exact same settings and configurations as the source VM.</p>
+<h3 id="why-use-capture">Why Use Capture?</h3>
+<p>Capturing a VM provides a reusable base configuration, which includes:</p>
+<ul>
+<li><strong>Operating System (OS):</strong> The OS and its current state.</li>
+<li><strong>Installed Applications:</strong> Any software installed on the VM.</li>
+<li><strong>System Settings and Configurations:</strong> Preserved settings, such as environment variables, installed packages, and network configurations.</li>
+</ul>
+<h3 id="types-of-capture">Types of Capture</h3>
+<ol>
+<li><strong>OS Disk Snapshot</strong>: Captures only the OS disk, useful for backup or duplication without including data disks.</li>
+<li><strong>Full VM Image</strong>: Captures the complete state, including attached data disks, and is ideal for creating multiple identical VMs or scaling with VMSS.</li>
+</ol>
+<h2 id="creating-an-image-of-an-azure-vm">Creating an Image of an Azure VM</h2>
+<h3 id="steps-to-capture-an-image-of-a-vm-full-vm-snapshot">Steps to Capture an Image of a VM (Full VM Snapshot)</h3>
+<ol>
+<li>
+<p><strong>Navigate to Azure Portal</strong></p>
+<ul>
+<li>Open the <a href="https://portal.azure.com" rel="external" target="_blank">Azure Portal</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Locate the Virtual Machine</strong></p>
+<ul>
+<li>Go to <strong>Virtual Machines</strong> in the portal and select the VM you want to capture.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generalize the VM (If Needed)</strong></p>
+<ul>
+<li><strong>Linux VM</strong>: SSH into the VM and run:
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo waagent -deprovision+user -force</span></span></code></pre></div>
+</li>
+<li><strong>Windows VM</strong>: RDP into the VM and run <strong>sysprep</strong>:
+<ul>
+<li>Go to <code>C:\Windows\System32\Sysprep</code>, run <code>sysprep.exe</code>, select <strong>Enter System Out-of-Box Experience (OOBE)</strong>, and check <strong>Generalize</strong>. Click <strong>OK</strong>.</li>
+</ul>
+</li>
+<li><strong>Stop the VM</strong> after generalizing to prepare it for image creation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Capture the Image</strong></p>
+<ul>
+<li>Select the VM, go to <strong>Overview</strong>, and click <strong>Capture</strong>.</li>
+<li>In the <strong>Capture</strong> panel, configure the following:
+<ul>
+<li><strong>Name</strong>: Provide a unique name for the image.</li>
+<li><strong>Resource Group</strong>: Select a resource group for the image.</li>
+<li><strong>Delete VM After Image Creation</strong>: Choose this option if you want to automatically delete the VM after creating the image.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Review and Create</strong></p>
+<ul>
+<li>Click <strong>Review + create</strong>, then <strong>Create</strong> to capture the VM image.</li>
+</ul>
+</li>
+<li>
+<p><strong>Use Image for New Deployments</strong></p>
+<ul>
+<li>The image will be saved under <strong>Images</strong> in the selected resource group, allowing you to use it for deploying new VMs based on this configuration.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>This process captures a full image of the VM, including OS configurations and disk data, making it reusable for future deployments.</p>
+<h2 id="azure-virtual-machine-scale-sets-vmss">Azure Virtual Machine Scale Sets (VMSS)</h2>
+<p>Azure <strong>Virtual Machine Scale Sets (VMSS)</strong> allow you to create and manage a group of identical, load-balanced virtual machines that can automatically scale in response to demand. VMSS helps build scalable, resilient applications and services without manual intervention.</p>
+<h3 id="key-features-of-vmss">Key Features of VMSS</h3>
+<ol>
+<li>
+<p><strong>Automatic Scaling</strong></p>
+<ul>
+<li>VMSS can scale the number of VM instances up or down based on:
+<ul>
+<li><strong>CPU Utilization</strong>: Increase instances when CPU usage is high, decrease them when low.</li>
+<li><strong>Memory Usage</strong>: Scale based on memory needs.</li>
+<li><strong>Custom Metrics</strong>: Use custom autoscaling rules specific to your application.</li>
+</ul>
+</li>
+<li>This ensures resources match the workload demands, optimizing costs and performance.</li>
+</ul>
+</li>
+<li>
+<p><strong>Load Balancing</strong></p>
+<ul>
+<li>VMSS distributes incoming traffic across all VM instances using an <strong>Azure Load Balancer</strong> or <strong>Application Gateway</strong>. This evens out the load, enhancing availability and performance.</li>
+</ul>
+</li>
+<li>
+<p><strong>High Availability and Fault Tolerance</strong></p>
+<ul>
+<li>VMSS can spread VM instances across <strong>Availability Zones</strong> or <strong>Availability Sets</strong> for resilience and to prevent single points of failure.</li>
+</ul>
+</li>
+<li>
+<p><strong>Integration with Azure Networking and Storage</strong></p>
+<ul>
+<li>VMSS supports Azure storage for persistent data and integrates with <strong>Virtual Networks (VNet)</strong>, ensuring secure communication and scalability.</li>
+</ul>
+</li>
+<li>
+<p><strong>Custom VM Images</strong></p>
+<ul>
+<li>VMSS can use either standard Azure images or <strong>custom images</strong> (such as images captured from existing VMs), enabling easy deployment of instances with pre-configured software and settings.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="common-use-cases-for-vmss">Common Use Cases for VMSS</h3>
+<ol>
+<li>
+<p><strong>Web and Application Hosting</strong></p>
+<ul>
+<li>Deploy large web applications or API services that need to scale with user demand, improving response times and handling high traffic.</li>
+</ul>
+</li>
+<li>
+<p><strong>Big Data and Batch Processing</strong></p>
+<ul>
+<li>Run compute-intensive workloads (e.g., data processing, simulations) that can benefit from parallel processing on multiple VMs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Microservices Architecture</strong></p>
+<ul>
+<li>Use VMSS to scale microservices components individually, each with isolated scaling and deployment options.</li>
+</ul>
+</li>
+</ol>
+<h3 id="creating-an-image-for-azure-virtual-machine-scale-sets-vmss">Creating an Image for Azure Virtual Machine Scale Sets (VMSS)</h3>
+<p>To deploy multiple, identical VMs using a Virtual Machine Scale Set (VMSS), you can capture a VM image as the base configuration. Here’s how to create and use an image with VMSS.</p>
+<h3 id="steps-to-capture-an-image-for-vmss">Steps to Capture an Image for VMSS</h3>
+<ol>
+<li>
+<p><strong>Navigate to Azure Portal</strong></p>
+<ul>
+<li>Open the <a href="https://portal.azure.com" rel="external" target="_blank">Azure Portal</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create or Customize the Source VM</strong></p>
+<ul>
+<li>Deploy a VM with the desired configuration or customize an existing one (install necessary software, set configurations, etc.).</li>
+</ul>
+</li>
+<li>
+<p><strong>Generalize the VM (If Needed)</strong></p>
+<ul>
+<li><strong>Linux VM</strong>: SSH into the VM and run:
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo waagent -deprovision+user -force</span></span></code></pre></div>
+</li>
+<li><strong>Windows VM</strong>: RDP into the VM and run <strong>sysprep</strong>:
+<ul>
+<li>Go to <code>C:\Windows\System32\Sysprep</code>, run <code>sysprep.exe</code>, select <strong>Enter System Out-of-Box Experience (OOBE)</strong>, and check <strong>Generalize</strong>. Click <strong>OK</strong>.</li>
+</ul>
+</li>
+<li><strong>Stop the VM</strong> after generalizing to prepare it for image creation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Capture the Image</strong></p>
+<ul>
+<li>Select the VM, go to <strong>Overview</strong>, and click <strong>Capture</strong>.</li>
+<li>In the <strong>Capture</strong> panel:
+<ul>
+<li><strong>Name</strong>: Enter a unique name for the image.</li>
+<li><strong>Resource Group</strong>: Select a resource group for the image.</li>
+<li><strong>Delete VM After Image Creation</strong>: Optionally, check this box if you no longer need the VM.</li>
+</ul>
+</li>
+<li>Click <strong>Review + create</strong> and then <strong>Create</strong> to capture the VM image.</li>
+</ul>
+</li>
+<li>
+<p><strong>Create a Virtual Machine Scale Set Using the Image</strong></p>
+<ul>
+<li>Go to <strong>Virtual Machine Scale Sets</strong> in the Azure portal and click <strong>Create</strong>.</li>
+<li>Choose your <strong>Subscription</strong> and <strong>Resource Group</strong>.</li>
+<li>Under <strong>Image</strong>, select <strong>My Items</strong> and choose the image you created in the previous step.</li>
+<li>Configure VMSS settings (size, number of instances, networking, etc.) as needed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Complete the VMSS Creation</strong></p>
+<ul>
+<li>After configuring, click <strong>Review + create</strong> and then <strong>Create</strong> to deploy the scale set using the custom image.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>This image-based VMSS deployment allows you to create identical, scalable instances across multiple VMs with the same preconfigured settings.</p>
+<h2 id="azure-virtual-machine-restore-point">Azure Virtual Machine Restore Point</h2>
+<h2 id="overview">Overview</h2>
+<p>Azure VM Restore Points allow you to create consistent snapshots of your virtual machines. These restore points capture the state of a VM&rsquo;s disk(s), which can be used to restore the VM or individual disks in the future.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Crash-Consistent and Application-Consistent Snapshots</strong></li>
+<li>Incremental backups to optimize storage use.</li>
+<li>Restore entire VM or specific disks.</li>
+<li>Integration with Azure Backup for automated restore point management.</li>
+</ul>
+<h2 id="key-components">Key Components</h2>
+<ol>
+<li><strong>Restore Point Collection</strong>: A container that holds restore points for a VM.</li>
+<li><strong>Restore Point</strong>: A snapshot of the VM’s disks at a specific point in time.</li>
+<li><strong>Disk Snapshot</strong>: A snapshot of an individual disk.</li>
+</ol>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li>Disaster recovery.</li>
+<li>Testing and development using a point-in-time VM snapshot.</li>
+<li>Rollback changes after updates or application installations.</li>
+</ul>
+<hr>
+<h2 id="steps-to-create-a-restore-point">Steps to Create a Restore Point</h2>
+<h3 id="1-using-the-azure-portal">1. Using the Azure Portal</h3>
+<ol>
+<li>Go to <strong>Virtual Machines</strong> in the Azure Portal.</li>
+<li>Select the VM you want to back up.</li>
+<li>Navigate to <strong>Backup</strong> &gt; <strong>Restore Points</strong>.</li>
+<li>Click <strong>+ Create</strong> to create a restore point.</li>
+<li>Select <strong>Crash-Consistent</strong> or <strong>Application-Consistent</strong> based on your needs.</li>
+<li>Confirm and create the restore point.</li>
+</ol>
+<h3 id="2-using-azure-cli">2. Using Azure CLI</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Create a restore point collection</span>
+</span></span><span style="display:flex;"><span>az restore-point create --resource-group &lt;ResourceGroupName&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --vm-name &lt;VMName&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --name &lt;RestorePointName&gt;</span></span></code></pre></div>
+<h2 id="steps-to-restore-a-virtual-machine">Steps to Restore a Virtual Machine</h2>
+<h2 id="1-restore-entire-vm">1. Restore Entire VM</h2>
+<ul>
+<li>Navigate to the <strong>Restore Points</strong> of the desired VM.</li>
+<li>Select the restore point you want to use.</li>
+<li>Choose <strong>Restore VM</strong>.</li>
+<li>Configure the new VM settings if required.</li>
+<li>Start the restore process.</li>
+</ul>
+<h2 id="2-restore-individual-disks">2. Restore Individual Disks</h2>
+<ul>
+<li>Navigate to <strong>Restore Points</strong>.</li>
+<li>Select the restore point and disk you want to restore.</li>
+<li>Use the restored disk to replace the original disk or attach it to a new VM.</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../index.html">
+Azure Cloud Documentation
+          </a>
+        </div>
+        <script>
+          window.index_js_url="../searchindex.en.js?1734695904";
+        </script>
+        <search><form action="../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="../js/auto-complete.js?1734695904" defer></script>
+        <script src="../js/lunr/lunr.min.js?1734695904" defer></script>
+        <script src="../js/lunr/lunr.stemmer.support.min.js?1734695904" defer></script>
+        <script src="../js/lunr/lunr.multi.min.js?1734695904" defer></script>
+        <script src="../js/lunr/lunr.en.min.js?1734695904" defer></script>
+        <script src="../js/search.js?1734695904" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/azure/index.html"><a class="padding" href="../azure/index.html">Azure documentation</a></li>
+            <li class="" data-nav-id="/part01/index.html"><a class="padding" href="../part01/index.html">Part 01</a></li>
+            <li class="" data-nav-id="/part02/index.html"><a class="padding" href="../part02/index.html">Part 02</a></li>
+            <li class="" data-nav-id="/part03/index.html"><a class="padding" href="../part03/index.html">Part 03</a></li>
+            <li class="active " data-nav-id="/part04-copy/index.html"><a class="padding" href="../part04-copy/index.html">Part 04</a></li>
+            <li class="" data-nav-id="/part04/index.html"><a class="padding" href="../part04/index.html">Part 04</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="../part04-copy/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="../js/clipboard.min.js?1734695904" defer></script>
+    <script src="../js/perfect-scrollbar.min.js?1734695904" defer></script>
+    <script src="../js/theme.js?1734695904" defer></script>
+  </body>
+</html>

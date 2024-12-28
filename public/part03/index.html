@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.1+f1701957c30daae7cd133bec5a7968480563ce9f">
+    <meta name="description" content="Azure CLI Commands Overview Azure CLI is a command-line tool used to manage Azure resources. You can run Azure CLI commands to automate and streamline your workflows.
+Installation To install Azure CLI, follow these steps:
+On Linux (Ubuntu/Debian) curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash On macOS brew update &amp;&amp; brew install azure-cli On Windows # Download the installer from the official website: https://aka.ms/installazurecliwindows Azure CLI Login Before using Azure CLI, you need to log in to your Azure account.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Part 03 :: Azure Cloud Documentation">
+    <meta name="twitter:description" content="Azure CLI Commands Overview Azure CLI is a command-line tool used to manage Azure resources. You can run Azure CLI commands to automate and streamline your workflows.
+Installation To install Azure CLI, follow these steps:
+On Linux (Ubuntu/Debian) curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash On macOS brew update &amp;&amp; brew install azure-cli On Windows # Download the installer from the official website: https://aka.ms/installazurecliwindows Azure CLI Login Before using Azure CLI, you need to log in to your Azure account.">
+    <meta property="og:url" content="https://khushiramsingh680.github.io/Azure/part03/index.html">
+    <meta property="og:site_name" content="Azure Cloud Documentation">
+    <meta property="og:title" content="Part 03 :: Azure Cloud Documentation">
+    <meta property="og:description" content="Azure CLI Commands Overview Azure CLI is a command-line tool used to manage Azure resources. You can run Azure CLI commands to automate and streamline your workflows.
+Installation To install Azure CLI, follow these steps:
+On Linux (Ubuntu/Debian) curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash On macOS brew update &amp;&amp; brew install azure-cli On Windows # Download the installer from the official website: https://aka.ms/installazurecliwindows Azure CLI Login Before using Azure CLI, you need to log in to your Azure account.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Azure Cloud Documentation">
+    <meta itemprop="name" content="Part 03 :: Azure Cloud Documentation">
+    <meta itemprop="description" content="Azure CLI Commands Overview Azure CLI is a command-line tool used to manage Azure resources. You can run Azure CLI commands to automate and streamline your workflows.
+Installation To install Azure CLI, follow these steps:
+On Linux (Ubuntu/Debian) curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash On macOS brew update &amp;&amp; brew install azure-cli On Windows # Download the installer from the official website: https://aka.ms/installazurecliwindows Azure CLI Login Before using Azure CLI, you need to log in to your Azure account.">
+    <meta itemprop="wordCount" content="369">
+    <title>Part 03 :: Azure Cloud Documentation</title>
+    <link href="../css/fontawesome-all.min.css?1734709081" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1734709081" rel="stylesheet"></noscript>
+    <link href="../css/auto-complete.css?1734709081" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1734709081" rel="stylesheet"></noscript>
+    <link href="../css/perfect-scrollbar.min.css?1734709081" rel="stylesheet">
+    <link href="../css/theme.min.css?1734709081" rel="stylesheet">
+    <link href="../css/format-html.min.css?1734709081" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='https:\/\/khushiramsingh680.github.io\/Azure';
+      window.relearn.min = `.min`;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="../part03/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#installation">Installation</a>
+      <ul>
+        <li><a href="#on-linux-ubuntudebian">On Linux (Ubuntu/Debian)</a></li>
+        <li><a href="#on-macos">On macOS</a></li>
+        <li><a href="#on-windows">On Windows</a></li>
+      </ul>
+    </li>
+    <li><a href="#azure-cli-login">Azure CLI Login</a></li>
+    <li><a href="#managing-azure-resources">Managing Azure Resources</a>
+      <ul>
+        <li><a href="#create-a-resource-group">Create a Resource Group</a></li>
+        <li><a href="#create-a-virtual-machine">Create a Virtual Machine</a></li>
+        <li><a href="#list-virtual-machines">List Virtual Machines</a></li>
+        <li><a href="#start-a-virtual-machine">Start a Virtual Machine</a></li>
+        <li><a href="#stop-a-virtual-machine">Stop a Virtual Machine</a></li>
+      </ul>
+    </li>
+    <li><a href="#managing-storage">Managing Storage</a>
+      <ul>
+        <li><a href="#create-a-storage-account">Create a Storage Account</a></li>
+        <li><a href="#list-storage-accounts">List Storage Accounts</a></li>
+      </ul>
+    </li>
+    <li><a href="#managing-networking">Managing Networking</a>
+      <ul>
+        <li><a href="#create-a-virtual-network">Create a Virtual Network</a></li>
+        <li><a href="#create-a-subnet">Create a Subnet</a></li>
+      </ul>
+    </li>
+    <li><a href="#other-useful-commands">Other Useful Commands</a>
+      <ul>
+        <li><a href="#show-help-for-a-command">Show Help for a Command</a></li>
+        <li><a href="#get-the-cli-version">Get the CLI Version</a></li>
+        <li><a href="#get-the-currently-logged-in-user">Get the currently logged in user</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Part 03</span><meta itemprop="position" content="1"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part02/index.html" title="Part 02 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part04/index.html" title="Part 04 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="part-03">Part 03</h1>
+
+<h1 id="azure-cli-commands">Azure CLI Commands</h1>
+<h2 id="overview">Overview</h2>
+<p>Azure CLI is a command-line tool used to manage Azure resources. You can run Azure CLI commands to automate and streamline your workflows.</p>
+<h2 id="installation">Installation</h2>
+<p>To install Azure CLI, follow these steps:</p>
+<h3 id="on-linux-ubuntudebian">On Linux (Ubuntu/Debian)</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash</span></span></code></pre></div>
+<h3 id="on-macos">On macOS</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew update <span style="color:#f92672">&amp;&amp;</span> brew install azure-cli</span></span></code></pre></div>
+<h3 id="on-windows">On Windows</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Download the installer from the official website:</span>
+</span></span><span style="display:flex;"><span>https://aka.ms/installazurecliwindows</span></span></code></pre></div>
+<h2 id="azure-cli-login">Azure CLI Login</h2>
+<p>Before using Azure CLI, you need to log in to your Azure account.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az login</span></span></code></pre></div>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az login --use-device</span></span></code></pre></div>
+<h2 id="managing-azure-resources">Managing Azure Resources</h2>
+<h3 id="create-a-resource-group">Create a Resource Group</h3>
+<p>To create a resource group, use the following command:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az group create --name MyResourceGroup --location eastus</span></span></code></pre></div>
+<h3 id="create-a-virtual-machine">Create a Virtual Machine</h3>
+<p>To create a virtual machine (VM) in a resource group:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az vm create <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --resource-group MyResourceGroup <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name MyVM <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --image UbuntuLTS <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --admin-username azureuser <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --generate-ssh-keys</span></span></code></pre></div>
+<h3 id="list-virtual-machines">List Virtual Machines</h3>
+<p>To list all the virtual machines in a resource group:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az vm list --resource-group MyResourceGroup --output table</span></span></code></pre></div>
+<h3 id="start-a-virtual-machine">Start a Virtual Machine</h3>
+<p>To start a stopped VM:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az vm start --resource-group MyResourceGroup --name MyVM</span></span></code></pre></div>
+<h3 id="stop-a-virtual-machine">Stop a Virtual Machine</h3>
+<p>To stop a running VM:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az vm stop --resource-group MyResourceGroup --name MyVM</span></span></code></pre></div>
+<h2 id="managing-storage">Managing Storage</h2>
+<h3 id="create-a-storage-account">Create a Storage Account</h3>
+<p>To create a storage account:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az storage account create <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name mystorageaccount <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --resource-group MyResourceGroup <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --location eastus <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --sku Standard_LRS</span></span></code></pre></div>
+<h3 id="list-storage-accounts">List Storage Accounts</h3>
+<p>To list all storage accounts:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az storage account list --resource-group MyResourceGroup --output table</span></span></code></pre></div>
+<h2 id="managing-networking">Managing Networking</h2>
+<h3 id="create-a-virtual-network">Create a Virtual Network</h3>
+<p>To create a virtual network:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az network vnet create <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --resource-group MyResourceGroup <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name MyVNet <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --address-prefix 10.0.0.0/16</span></span></code></pre></div>
+<h3 id="create-a-subnet">Create a Subnet</h3>
+<p>To create a subnet in a virtual network:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az network vnet subnet create <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --resource-group MyResourceGroup <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --vnet-name MyVNet <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --name MySubnet <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --address-prefix 10.0.0.0/24</span></span></code></pre></div>
+<h2 id="other-useful-commands">Other Useful Commands</h2>
+<h3 id="show-help-for-a-command">Show Help for a Command</h3>
+<p>To show help for a specific command:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az &lt;command&gt; --help</span></span></code></pre></div>
+<h3 id="get-the-cli-version">Get the CLI Version</h3>
+<p>To check the version of the Azure CLI:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az --version</span></span></code></pre></div>
+<h3 id="get-the-currently-logged-in-user">Get the currently logged in user</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>az account list -o table</span></span></code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Azure CLI is a powerful tool for managing Azure resources through the command line. For more detailed documentation, visit the official Azure CLI documentation <a href="https://learn.microsoft.com/en-us/cli/azure/" rel="external" target="_blank">here</a>.</p>
+<ul>
+<li>Azure Cloud Shell</li>
+<li>Azure Authentications
+<ul>
+<li>Azure Service Principle</li>
+<li>Azure Managed Identity
+<ul>
+<li>User Assigned</li>
+<li>System Assigned</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../index.html">
+Azure Cloud Documentation
+          </a>
+        </div>
+        <script>
+          window.index_js_url="../searchindex.en.js?1734709081";
+        </script>
+        <search><form action="../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="../js/auto-complete.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.stemmer.support.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.multi.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.en.min.js?1734709081" defer></script>
+        <script src="../js/search.js?1734709081" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/azure/index.html"><a class="padding" href="../azure/index.html">Azure documentation</a></li>
+            <li class="" data-nav-id="/part01/index.html"><a class="padding" href="../part01/index.html">Part 01</a></li>
+            <li class="" data-nav-id="/part02/index.html"><a class="padding" href="../part02/index.html">Part 02</a></li>
+            <li class="active " data-nav-id="/part03/index.html"><a class="padding" href="../part03/index.html">Part 03</a></li>
+            <li class="" data-nav-id="/part04/index.html"><a class="padding" href="../part04/index.html">Part 04</a></li>
+            <li class="" data-nav-id="/part05/index.html"><a class="padding" href="../part05/index.html">Part 05</a></li>
+            <li class="" data-nav-id="/part06/index.html"><a class="padding" href="../part06/index.html">Part 06</a></li>
+            <li class="" data-nav-id="/part07/index.html"><a class="padding" href="../part07/index.html">Part 07</a></li>
+            <li class="" data-nav-id="/part08/index.html"><a class="padding" href="../part08/index.html">Part 08</a></li>
+            <li class="" data-nav-id="/part09/index.html"><a class="padding" href="../part09/index.html">Part 09</a></li>
+            <li class="" data-nav-id="/part10/index.html"><a class="padding" href="../part10/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11/index.html"><a class="padding" href="../part11/index.html">Part 11</a></li>
+            <li class="" data-nav-id="/part12/index.html"><a class="padding" href="../part12/index.html">Part 12</a></li>
+            <li class="" data-nav-id="/part13/index.html"><a class="padding" href="../part13/index.html">Part 13</a></li>
+            <li class="" data-nav-id="/part14/index.html"><a class="padding" href="../part14/index.html">Part 14</a></li>
+            <li class="" data-nav-id="/part15/index.html"><a class="padding" href="../part15/index.html">Part 15</a></li>
+            <li class="" data-nav-id="/part16/index.html"><a class="padding" href="../part16/index.html">Part 16</a></li>
+            <li class="" data-nav-id="/part17/index.html"><a class="padding" href="../part17/index.html">Part 17</a></li>
+            <li class="" data-nav-id="/part18/index.html"><a class="padding" href="../part18/index.html">Part 18</a></li>
+            <li class="" data-nav-id="/part19/index.html"><a class="padding" href="../part19/index.html">Part 19</a></li>
+            <li class="" data-nav-id="/part20/index.html"><a class="padding" href="../part20/index.html">Part 20</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="../part03/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="../js/clipboard.min.js?1734709081" defer></script>
+    <script src="../js/perfect-scrollbar.min.js?1734709081" defer></script>
+    <script src="../js/theme.js?1734709081" defer></script>
+  </body>
+</html>

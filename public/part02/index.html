@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.4">
+    <meta name="generator" content="Relearn 7.2.1+f1701957c30daae7cd133bec5a7968480563ce9f">
+    <meta name="description" content="Azure VM Tasks &amp; Common Interview Topics 1. Azure VM Basics Creating VMs: Understand the basics of creating and configuring VMs using both the Azure portal and Azure CLI. You should know different VM sizes, disk types, and pricing tiers. Start/Stop/Deallocate: Commands to start, stop, and deallocate VMs, and understanding the difference between stopping and deallocating a VM. Resizing a VM: Know how to resize a VM and the impact it has on the underlying infrastructure. 2. VM Networking Public vs Private IP Addresses: Configure and assign static/dynamic public and private IPs to Azure VMs. NSG (Network Security Groups): Configure NSGs to control inbound and outbound traffic for VMs. Load Balancing: Understand how to set up and use Azure Load Balancers for distributing traffic to multiple VMs. VNET and Subnets: Networking for VMs, including Virtual Networks (VNET), subnets, and peering. 3. Disks and Storage Managed vs Unmanaged Disks: Know the difference and implications on performance and cost. Attaching and Detaching Disks: Learn how to attach additional data disks to a VM and detach them when not needed. Disk Performance Tiers: Differences between Standard, Premium, and Ultra disks, and when to use each. 4. VM Images and Snapshots Creating Custom VM Images: Capture a VM as an image and reuse it to deploy new VMs with pre-configured environments. Snapshots: Creating and restoring from snapshots for backups. 5. Automation and Scaling Azure VM Scale Sets: Use VM Scale Sets for auto-scaling applications across multiple VMs. Automation: Use ARM Templates, Terraform, or Azure CLI to automate VM provisioning. Azure DevOps Pipelines: Automate VM creation and deployment as part of a CI/CD pipeline. 6. Azure VM Security Azure Bastion: Secure RDP/SSH access to VMs without exposing public IPs. Disk Encryption: Configure Azure Disk Encryption to secure data at rest. Managed Identities: Implement MSI for secure access to Azure resources without credentials. SSH Key Management: Generate and use SSH keys for Linux VM access, as well as passwordless access for Windows VMs. 7. Backup and Disaster Recovery Azure Backup: Set up Azure Backup for VM snapshots and restoring VMs in case of failure. Azure Site Recovery (ASR): Replicate and failover VMs for disaster recovery scenarios. 8. Troubleshooting Diagnosing VM Issues: Diagnose and troubleshoot VMs that fail to start or have performance issues (check logs, resource utilization, and network connectivity). Monitoring and Alerts: Set up monitoring using Azure Monitor and create alerts based on VM metrics like CPU usage, memory consumption, or disk IOPS. 9. Cost Management Azure Reserved Instances: Understand the concept of reserved VM instances to save on long-term costs. Spot VMs: Use Azure Spot VMs for cost-effective workloads and understand their limitations. VM Pricing: Estimate costs and optimize VMs for pricing based on workload needs. 10. OS-Specific Knowledge Windows VMs: Setting up RDP, enabling WinRM for remote management, configuring updates, and managing licensing. Linux VMs: SSH access, handling Linux kernel updates, and automating tasks with scripts. Common Interview Questions How would you create a virtual machine in Azure and configure it with specific VM size and OS?">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Part 02 :: Azure Cloud Documentation">
+    <meta name="twitter:description" content="Azure VM Tasks &amp; Common Interview Topics 1. Azure VM Basics Creating VMs: Understand the basics of creating and configuring VMs using both the Azure portal and Azure CLI. You should know different VM sizes, disk types, and pricing tiers. Start/Stop/Deallocate: Commands to start, stop, and deallocate VMs, and understanding the difference between stopping and deallocating a VM. Resizing a VM: Know how to resize a VM and the impact it has on the underlying infrastructure. 2. VM Networking Public vs Private IP Addresses: Configure and assign static/dynamic public and private IPs to Azure VMs. NSG (Network Security Groups): Configure NSGs to control inbound and outbound traffic for VMs. Load Balancing: Understand how to set up and use Azure Load Balancers for distributing traffic to multiple VMs. VNET and Subnets: Networking for VMs, including Virtual Networks (VNET), subnets, and peering. 3. Disks and Storage Managed vs Unmanaged Disks: Know the difference and implications on performance and cost. Attaching and Detaching Disks: Learn how to attach additional data disks to a VM and detach them when not needed. Disk Performance Tiers: Differences between Standard, Premium, and Ultra disks, and when to use each. 4. VM Images and Snapshots Creating Custom VM Images: Capture a VM as an image and reuse it to deploy new VMs with pre-configured environments. Snapshots: Creating and restoring from snapshots for backups. 5. Automation and Scaling Azure VM Scale Sets: Use VM Scale Sets for auto-scaling applications across multiple VMs. Automation: Use ARM Templates, Terraform, or Azure CLI to automate VM provisioning. Azure DevOps Pipelines: Automate VM creation and deployment as part of a CI/CD pipeline. 6. Azure VM Security Azure Bastion: Secure RDP/SSH access to VMs without exposing public IPs. Disk Encryption: Configure Azure Disk Encryption to secure data at rest. Managed Identities: Implement MSI for secure access to Azure resources without credentials. SSH Key Management: Generate and use SSH keys for Linux VM access, as well as passwordless access for Windows VMs. 7. Backup and Disaster Recovery Azure Backup: Set up Azure Backup for VM snapshots and restoring VMs in case of failure. Azure Site Recovery (ASR): Replicate and failover VMs for disaster recovery scenarios. 8. Troubleshooting Diagnosing VM Issues: Diagnose and troubleshoot VMs that fail to start or have performance issues (check logs, resource utilization, and network connectivity). Monitoring and Alerts: Set up monitoring using Azure Monitor and create alerts based on VM metrics like CPU usage, memory consumption, or disk IOPS. 9. Cost Management Azure Reserved Instances: Understand the concept of reserved VM instances to save on long-term costs. Spot VMs: Use Azure Spot VMs for cost-effective workloads and understand their limitations. VM Pricing: Estimate costs and optimize VMs for pricing based on workload needs. 10. OS-Specific Knowledge Windows VMs: Setting up RDP, enabling WinRM for remote management, configuring updates, and managing licensing. Linux VMs: SSH access, handling Linux kernel updates, and automating tasks with scripts. Common Interview Questions How would you create a virtual machine in Azure and configure it with specific VM size and OS?">
+    <meta property="og:url" content="https://khushiramsingh680.github.io/Azure/part02/index.html">
+    <meta property="og:site_name" content="Azure Cloud Documentation">
+    <meta property="og:title" content="Part 02 :: Azure Cloud Documentation">
+    <meta property="og:description" content="Azure VM Tasks &amp; Common Interview Topics 1. Azure VM Basics Creating VMs: Understand the basics of creating and configuring VMs using both the Azure portal and Azure CLI. You should know different VM sizes, disk types, and pricing tiers. Start/Stop/Deallocate: Commands to start, stop, and deallocate VMs, and understanding the difference between stopping and deallocating a VM. Resizing a VM: Know how to resize a VM and the impact it has on the underlying infrastructure. 2. VM Networking Public vs Private IP Addresses: Configure and assign static/dynamic public and private IPs to Azure VMs. NSG (Network Security Groups): Configure NSGs to control inbound and outbound traffic for VMs. Load Balancing: Understand how to set up and use Azure Load Balancers for distributing traffic to multiple VMs. VNET and Subnets: Networking for VMs, including Virtual Networks (VNET), subnets, and peering. 3. Disks and Storage Managed vs Unmanaged Disks: Know the difference and implications on performance and cost. Attaching and Detaching Disks: Learn how to attach additional data disks to a VM and detach them when not needed. Disk Performance Tiers: Differences between Standard, Premium, and Ultra disks, and when to use each. 4. VM Images and Snapshots Creating Custom VM Images: Capture a VM as an image and reuse it to deploy new VMs with pre-configured environments. Snapshots: Creating and restoring from snapshots for backups. 5. Automation and Scaling Azure VM Scale Sets: Use VM Scale Sets for auto-scaling applications across multiple VMs. Automation: Use ARM Templates, Terraform, or Azure CLI to automate VM provisioning. Azure DevOps Pipelines: Automate VM creation and deployment as part of a CI/CD pipeline. 6. Azure VM Security Azure Bastion: Secure RDP/SSH access to VMs without exposing public IPs. Disk Encryption: Configure Azure Disk Encryption to secure data at rest. Managed Identities: Implement MSI for secure access to Azure resources without credentials. SSH Key Management: Generate and use SSH keys for Linux VM access, as well as passwordless access for Windows VMs. 7. Backup and Disaster Recovery Azure Backup: Set up Azure Backup for VM snapshots and restoring VMs in case of failure. Azure Site Recovery (ASR): Replicate and failover VMs for disaster recovery scenarios. 8. Troubleshooting Diagnosing VM Issues: Diagnose and troubleshoot VMs that fail to start or have performance issues (check logs, resource utilization, and network connectivity). Monitoring and Alerts: Set up monitoring using Azure Monitor and create alerts based on VM metrics like CPU usage, memory consumption, or disk IOPS. 9. Cost Management Azure Reserved Instances: Understand the concept of reserved VM instances to save on long-term costs. Spot VMs: Use Azure Spot VMs for cost-effective workloads and understand their limitations. VM Pricing: Estimate costs and optimize VMs for pricing based on workload needs. 10. OS-Specific Knowledge Windows VMs: Setting up RDP, enabling WinRM for remote management, configuring updates, and managing licensing. Linux VMs: SSH access, handling Linux kernel updates, and automating tasks with scripts. Common Interview Questions How would you create a virtual machine in Azure and configure it with specific VM size and OS?">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Azure Cloud Documentation">
+    <meta itemprop="name" content="Part 02 :: Azure Cloud Documentation">
+    <meta itemprop="description" content="Azure VM Tasks &amp; Common Interview Topics 1. Azure VM Basics Creating VMs: Understand the basics of creating and configuring VMs using both the Azure portal and Azure CLI. You should know different VM sizes, disk types, and pricing tiers. Start/Stop/Deallocate: Commands to start, stop, and deallocate VMs, and understanding the difference between stopping and deallocating a VM. Resizing a VM: Know how to resize a VM and the impact it has on the underlying infrastructure. 2. VM Networking Public vs Private IP Addresses: Configure and assign static/dynamic public and private IPs to Azure VMs. NSG (Network Security Groups): Configure NSGs to control inbound and outbound traffic for VMs. Load Balancing: Understand how to set up and use Azure Load Balancers for distributing traffic to multiple VMs. VNET and Subnets: Networking for VMs, including Virtual Networks (VNET), subnets, and peering. 3. Disks and Storage Managed vs Unmanaged Disks: Know the difference and implications on performance and cost. Attaching and Detaching Disks: Learn how to attach additional data disks to a VM and detach them when not needed. Disk Performance Tiers: Differences between Standard, Premium, and Ultra disks, and when to use each. 4. VM Images and Snapshots Creating Custom VM Images: Capture a VM as an image and reuse it to deploy new VMs with pre-configured environments. Snapshots: Creating and restoring from snapshots for backups. 5. Automation and Scaling Azure VM Scale Sets: Use VM Scale Sets for auto-scaling applications across multiple VMs. Automation: Use ARM Templates, Terraform, or Azure CLI to automate VM provisioning. Azure DevOps Pipelines: Automate VM creation and deployment as part of a CI/CD pipeline. 6. Azure VM Security Azure Bastion: Secure RDP/SSH access to VMs without exposing public IPs. Disk Encryption: Configure Azure Disk Encryption to secure data at rest. Managed Identities: Implement MSI for secure access to Azure resources without credentials. SSH Key Management: Generate and use SSH keys for Linux VM access, as well as passwordless access for Windows VMs. 7. Backup and Disaster Recovery Azure Backup: Set up Azure Backup for VM snapshots and restoring VMs in case of failure. Azure Site Recovery (ASR): Replicate and failover VMs for disaster recovery scenarios. 8. Troubleshooting Diagnosing VM Issues: Diagnose and troubleshoot VMs that fail to start or have performance issues (check logs, resource utilization, and network connectivity). Monitoring and Alerts: Set up monitoring using Azure Monitor and create alerts based on VM metrics like CPU usage, memory consumption, or disk IOPS. 9. Cost Management Azure Reserved Instances: Understand the concept of reserved VM instances to save on long-term costs. Spot VMs: Use Azure Spot VMs for cost-effective workloads and understand their limitations. VM Pricing: Estimate costs and optimize VMs for pricing based on workload needs. 10. OS-Specific Knowledge Windows VMs: Setting up RDP, enabling WinRM for remote management, configuring updates, and managing licensing. Linux VMs: SSH access, handling Linux kernel updates, and automating tasks with scripts. Common Interview Questions How would you create a virtual machine in Azure and configure it with specific VM size and OS?">
+    <meta itemprop="wordCount" content="730">
+    <title>Part 02 :: Azure Cloud Documentation</title>
+    <link href="../css/fontawesome-all.min.css?1734709081" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/fontawesome-all.min.css?1734709081" rel="stylesheet"></noscript>
+    <link href="../css/auto-complete.css?1734709081" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="../css/auto-complete.css?1734709081" rel="stylesheet"></noscript>
+    <link href="../css/perfect-scrollbar.min.css?1734709081" rel="stylesheet">
+    <link href="../css/theme.min.css?1734709081" rel="stylesheet">
+    <link href="../css/format-html.min.css?1734709081" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='https:\/\/khushiramsingh680.github.io\/Azure';
+      window.relearn.min = `.min`;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="../part02/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#azure-vm-tasks--common-interview-topics">Azure VM Tasks &amp; Common Interview Topics</a>
+      <ul>
+        <li><a href="#1-azure-vm-basics">1. Azure VM Basics</a></li>
+        <li><a href="#2-vm-networking">2. VM Networking</a></li>
+        <li><a href="#3-disks-and-storage">3. Disks and Storage</a></li>
+        <li><a href="#4-vm-images-and-snapshots">4. VM Images and Snapshots</a></li>
+        <li><a href="#5-automation-and-scaling">5. Automation and Scaling</a></li>
+        <li><a href="#6-azure-vm-security">6. Azure VM Security</a></li>
+        <li><a href="#7-backup-and-disaster-recovery">7. Backup and Disaster Recovery</a></li>
+        <li><a href="#8-troubleshooting">8. Troubleshooting</a></li>
+        <li><a href="#9-cost-management">9. Cost Management</a></li>
+        <li><a href="#10-os-specific-knowledge">10. OS-Specific Knowledge</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-interview-questions">Common Interview Questions</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Part 02</span><meta itemprop="position" content="1"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part01/index.html" title="Part 01 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="../part03/index.html" title="Part 03 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable page" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="part-02">Part 02</h1>
+
+<h2 id="azure-vm-tasks--common-interview-topics">Azure VM Tasks &amp; Common Interview Topics</h2>
+<h3 id="1-azure-vm-basics">1. Azure VM Basics</h3>
+<ul>
+<li><strong>Creating VMs</strong>: Understand the basics of creating and configuring VMs using both the Azure portal and Azure CLI. You should know different VM sizes, disk types, and pricing tiers.</li>
+<li><strong>Start/Stop/Deallocate</strong>: Commands to start, stop, and deallocate VMs, and understanding the difference between stopping and deallocating a VM.</li>
+<li><strong>Resizing a VM</strong>: Know how to resize a VM and the impact it has on the underlying infrastructure.</li>
+</ul>
+<h3 id="2-vm-networking">2. VM Networking</h3>
+<ul>
+<li><strong>Public vs Private IP Addresses</strong>: Configure and assign static/dynamic public and private IPs to Azure VMs.</li>
+<li><strong>NSG (Network Security Groups)</strong>: Configure NSGs to control inbound and outbound traffic for VMs.</li>
+<li><strong>Load Balancing</strong>: Understand how to set up and use Azure Load Balancers for distributing traffic to multiple VMs.</li>
+<li><strong>VNET and Subnets</strong>: Networking for VMs, including Virtual Networks (VNET), subnets, and peering.</li>
+</ul>
+<h3 id="3-disks-and-storage">3. Disks and Storage</h3>
+<ul>
+<li><strong>Managed vs Unmanaged Disks</strong>: Know the difference and implications on performance and cost.</li>
+<li><strong>Attaching and Detaching Disks</strong>: Learn how to attach additional data disks to a VM and detach them when not needed.</li>
+<li><strong>Disk Performance Tiers</strong>: Differences between Standard, Premium, and Ultra disks, and when to use each.</li>
+</ul>
+<h3 id="4-vm-images-and-snapshots">4. VM Images and Snapshots</h3>
+<ul>
+<li><strong>Creating Custom VM Images</strong>: Capture a VM as an image and reuse it to deploy new VMs with pre-configured environments.</li>
+<li><strong>Snapshots</strong>: Creating and restoring from snapshots for backups.</li>
+</ul>
+<h3 id="5-automation-and-scaling">5. Automation and Scaling</h3>
+<ul>
+<li><strong>Azure VM Scale Sets</strong>: Use VM Scale Sets for auto-scaling applications across multiple VMs.</li>
+<li><strong>Automation</strong>: Use <strong>ARM Templates</strong>, <strong>Terraform</strong>, or <strong>Azure CLI</strong> to automate VM provisioning.</li>
+<li><strong>Azure DevOps Pipelines</strong>: Automate VM creation and deployment as part of a CI/CD pipeline.</li>
+</ul>
+<h3 id="6-azure-vm-security">6. Azure VM Security</h3>
+<ul>
+<li><strong>Azure Bastion</strong>: Secure RDP/SSH access to VMs without exposing public IPs.</li>
+<li><strong>Disk Encryption</strong>: Configure Azure Disk Encryption to secure data at rest.</li>
+<li><strong>Managed Identities</strong>: Implement MSI for secure access to Azure resources without credentials.</li>
+<li><strong>SSH Key Management</strong>: Generate and use SSH keys for Linux VM access, as well as passwordless access for Windows VMs.</li>
+</ul>
+<h3 id="7-backup-and-disaster-recovery">7. Backup and Disaster Recovery</h3>
+<ul>
+<li><strong>Azure Backup</strong>: Set up Azure Backup for VM snapshots and restoring VMs in case of failure.</li>
+<li><strong>Azure Site Recovery (ASR)</strong>: Replicate and failover VMs for disaster recovery scenarios.</li>
+</ul>
+<h3 id="8-troubleshooting">8. Troubleshooting</h3>
+<ul>
+<li><strong>Diagnosing VM Issues</strong>: Diagnose and troubleshoot VMs that fail to start or have performance issues (check logs, resource utilization, and network connectivity).</li>
+<li><strong>Monitoring and Alerts</strong>: Set up monitoring using <strong>Azure Monitor</strong> and create alerts based on VM metrics like CPU usage, memory consumption, or disk IOPS.</li>
+</ul>
+<h3 id="9-cost-management">9. Cost Management</h3>
+<ul>
+<li><strong>Azure Reserved Instances</strong>: Understand the concept of reserved VM instances to save on long-term costs.</li>
+<li><strong>Spot VMs</strong>: Use Azure Spot VMs for cost-effective workloads and understand their limitations.</li>
+<li><strong>VM Pricing</strong>: Estimate costs and optimize VMs for pricing based on workload needs.</li>
+</ul>
+<h3 id="10-os-specific-knowledge">10. OS-Specific Knowledge</h3>
+<ul>
+<li><strong>Windows VMs</strong>: Setting up <strong>RDP</strong>, enabling <strong>WinRM</strong> for remote management, configuring updates, and managing licensing.</li>
+<li><strong>Linux VMs</strong>: SSH access, handling Linux kernel updates, and automating tasks with scripts.</li>
+</ul>
+<hr>
+<h2 id="common-interview-questions">Common Interview Questions</h2>
+<ol>
+<li>
+<p><strong>How would you create a virtual machine in Azure and configure it with specific VM size and OS?</strong></p>
+<ul>
+<li>Testing knowledge on Azure CLI, ARM Templates, or Terraform to automate VM creation.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is the difference between deallocating and stopping a VM?</strong></p>
+<ul>
+<li>Stopping still incurs costs for resources, while deallocating releases hardware and stops billing for the VM.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you securely connect to a VM in Azure without exposing public IPs?</strong></p>
+<ul>
+<li>Usage of Azure Bastion, Just-in-Time (JIT) VM access, or private endpoint configurations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Explain Azure VM scale sets and how you would configure autoscaling.</strong></p>
+<ul>
+<li>Understand scaling rules, thresholds, and VM image configuration.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are managed identities, and how would you use them in Azure VMs?</strong></p>
+<ul>
+<li>Assigning VMs identity in Azure AD and granting access to Azure resources without credentials.</li>
+</ul>
+</li>
+<li>
+<p><strong>How would you troubleshoot a VM that is not responding or has network connectivity issues?</strong></p>
+<ul>
+<li>Diagnose network security groups, VNET configurations, or use Azure Serial Console for troubleshooting.</li>
+</ul>
+</li>
+<li>
+<p><strong>What are the benefits of using Spot VMs, and in what scenarios would they be appropriate?</strong></p>
+<ul>
+<li>Spot VMs for cost-effective compute resources but with interruption at any time.</li>
+</ul>
+</li>
+<li>
+<p><strong>How would you handle disk performance issues in Azure VMs?</strong></p>
+<ul>
+<li>Discuss disk types, performance tiers, resizing, and application tuning.</li>
+</ul>
+</li>
+<li>
+<p><strong>What is the difference between Azure Standard HDD, Premium SSD, and Ultra Disks?</strong></p>
+<ul>
+<li>Differences in IOPS, throughput, latency, and costs.</li>
+</ul>
+</li>
+<li>
+<p><strong>How do you back up and restore Azure VMs?</strong></p>
+<ul>
+<li>Azure Backup configuration, restoring VMs from snapshots, or using recovery services.</li>
+</ul>
+</li>
+</ol>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="../index.html">
+Azure Cloud Documentation
+          </a>
+        </div>
+        <script>
+          window.index_js_url="../searchindex.en.js?1734709081";
+        </script>
+        <search><form action="../search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="../js/auto-complete.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.stemmer.support.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.multi.min.js?1734709081" defer></script>
+        <script src="../js/lunr/lunr.en.min.js?1734709081" defer></script>
+        <script src="../js/search.js?1734709081" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="../index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/azure/index.html"><a class="padding" href="../azure/index.html">Azure documentation</a></li>
+            <li class="" data-nav-id="/part01/index.html"><a class="padding" href="../part01/index.html">Part 01</a></li>
+            <li class="active " data-nav-id="/part02/index.html"><a class="padding" href="../part02/index.html">Part 02</a></li>
+            <li class="" data-nav-id="/part03/index.html"><a class="padding" href="../part03/index.html">Part 03</a></li>
+            <li class="" data-nav-id="/part04/index.html"><a class="padding" href="../part04/index.html">Part 04</a></li>
+            <li class="" data-nav-id="/part05/index.html"><a class="padding" href="../part05/index.html">Part 05</a></li>
+            <li class="" data-nav-id="/part06/index.html"><a class="padding" href="../part06/index.html">Part 06</a></li>
+            <li class="" data-nav-id="/part07/index.html"><a class="padding" href="../part07/index.html">Part 07</a></li>
+            <li class="" data-nav-id="/part08/index.html"><a class="padding" href="../part08/index.html">Part 08</a></li>
+            <li class="" data-nav-id="/part09/index.html"><a class="padding" href="../part09/index.html">Part 09</a></li>
+            <li class="" data-nav-id="/part10/index.html"><a class="padding" href="../part10/index.html">Part 10</a></li>
+            <li class="" data-nav-id="/part11/index.html"><a class="padding" href="../part11/index.html">Part 11</a></li>
+            <li class="" data-nav-id="/part12/index.html"><a class="padding" href="../part12/index.html">Part 12</a></li>
+            <li class="" data-nav-id="/part13/index.html"><a class="padding" href="../part13/index.html">Part 13</a></li>
+            <li class="" data-nav-id="/part14/index.html"><a class="padding" href="../part14/index.html">Part 14</a></li>
+            <li class="" data-nav-id="/part15/index.html"><a class="padding" href="../part15/index.html">Part 15</a></li>
+            <li class="" data-nav-id="/part16/index.html"><a class="padding" href="../part16/index.html">Part 16</a></li>
+            <li class="" data-nav-id="/part17/index.html"><a class="padding" href="../part17/index.html">Part 17</a></li>
+            <li class="" data-nav-id="/part18/index.html"><a class="padding" href="../part18/index.html">Part 18</a></li>
+            <li class="" data-nav-id="/part19/index.html"><a class="padding" href="../part19/index.html">Part 19</a></li>
+            <li class="" data-nav-id="/part20/index.html"><a class="padding" href="../part20/index.html">Part 20</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="../part02/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="../js/clipboard.min.js?1734709081" defer></script>
+    <script src="../js/perfect-scrollbar.min.js?1734709081" defer></script>
+    <script src="../js/theme.js?1734709081" defer></script>
+  </body>
+</html>

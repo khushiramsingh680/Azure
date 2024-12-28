@@ -4,7 +4,7 @@ title = 'Azure Cloud Documentation'
 theme = 'hugo-theme-relearn'
 relativeURLs = true
 canonifyURLs = true
-
+ignoreLogs = ['warning-goldmark-raw-html']
 [params]
   # Relearn theme-specific parameters
   colorTheme = "light"
